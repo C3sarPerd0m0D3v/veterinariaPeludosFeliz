@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Adopción de Mascotas</title>
+  <link rel="stylesheet" href="css/adopcion.css">
+</head>
+<body>
+  <!-- Navegación -->
+  <header>
+    <ul>
+      <li><a href="../menu.html">menu</a></li>
+      <li><a href="#">servicios veterinarios</a></li>
+      <li><a href="contacto.html">contacto</a></li>
+      <li><a href="preguntas veterinarias.html">preguntas veterinarias</a></li>
+    </ul>
+  </header>
+
+  <!-- Contenido principal -->
+  <main>
+    <div class="form-container">
+      <h2>Adoptar</h2>
+      <form id="adopcionForm">
+        <input type="text" id="nombre" placeholder="Tu nombre" required>
+
+        <select id="especie" required>
+          <option value="">Selecciona especie</option>
+          <option value="gatos">Gato</option>
+          <option value="perros">Perro</option>
+        </select>
+
+        <!-- Botón para abrir modal -->
+        <a href="#modal" class="btn">Seleccionar Mascota</a>
+
+        <div id="mascotasSeleccion"></div>
+        <button type="submit">Adoptar</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Modal emergente -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h3>Selecciona una mascota</h3>
+            <!-- Botón cerrar modal -->
+  
+      <div class="galeria">
+        <!-- Gatos -->
+        <button type="button" class="card" data-nombre="Michi">
+          <img src="css/img/gato1.jpg" alt="Michi">
+          <p>Michi</p>
+        </button>
+        <button type="button" class="card" data-nombre="Luna">
+          <img src="css/img/gato2.jpg" alt="Luna">
+          <p>Luna</p>
+        </button>
+        <button type="button" class="card" data-nombre="Tom">
+          <img src="css/img/gato3.jpg" alt="Tom">
+          <p>Tom</p>
+        </button>
+
+        <!-- Perros -->
+        <button type="button" class="card" data-nombre="Firulais">
+          <img src="css/img/perro1.jpg" alt="Firulais">
+          <p>Firulais</p>
+        </button>
+        <button type="button" class="card" data-nombre="Max">
+          <img src="css/img/perro2.jpg" alt="Max">
+          <p>Max</p>
+        </button>
+        <button type="button" class="card" data-nombre="Nina">
+          <img src="css/img/perro3.jpg" alt="Nina">
+          <p>Nina</p>
+        </button>
+      </div>
+        <!-- Botón cerrar modal -->
+      <a href="#" class="close">Cerrar</a>
+    </div>
+  </div>
+
+    <script src="../../js/adoptar.js"></script>
+
+
+</body>
+</html>  

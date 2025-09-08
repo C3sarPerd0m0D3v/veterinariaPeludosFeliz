@@ -1,0 +1,91 @@
+:root{
+  --gold: #c19866;
+  --dark: #1b1b1b;
+  --panel-bg: rgba(30,30,30,0.95);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(rgba(255, 255, 255, 0.581), rgba(151, 151, 151, 0.367)), 
+              url('img/Fondo\ para\ pagina\ veterinaria.png') center/cover fixed no-repeat;
+  color: #f0f0f0;
+
+  display: flex;
+  flex-direction: column;  /* Header arriba, contenido abajo */
+}
+
+header {
+  width: 100%;
+  background: rgba(145, 145, 144, 0.475);
+  box-shadow: 0 2px 8px rgba(200, 200, 200, 0.6);
+  text-align: center;
+  padding: 24px 12px;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  margin: 0;
+  color: var(--gold);
+  font-size: 1.8rem;
+  text-shadow: 2px 2px 6px #000;
+}
+
+header p {
+  margin: 6px 0 0;
+  color: #ddd;
+}
+
+.login-wrap {
+  flex: 1;                      /* ocupa todo el espacio sobrante debajo del header */
+  display: flex;
+  align-items: center;          /* centra verticalmente */
+  justify-content: center;      /* centra horizontalmente */
+  padding: 20px;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 28px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 8px 30px rgba(43, 43, 43, 0.6);
+  text-align: center;
+}
+
+.login-card h2 {
+  color: var(--gold);
+  margin: 0 0 18px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 2px solid rgba(255,204,0,0.25);
+  background: rgba(224, 224, 224, 0.6);
+  color: #5d5450;
+  box-sizing: border-box;
+}
+
+.login-card button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  background: var(--gold);
+  color: #5d5d5d;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.login-card button:hover {
+  transform: scale(1.03);
+}

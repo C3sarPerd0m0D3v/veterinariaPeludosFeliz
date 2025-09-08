@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Citas Veterinarias</title>
+  <link rel="stylesheet" href="css/citas.css">
+</head>
+<body>
+  <!-- Navegación -->
+  <header>
+    <ul>
+      <li><a href="../menu.html">menu</a></li>
+      <li><a href="#">servicios veterinarios</a></li>
+      <li><a href="contacto.html">contacto</a></li>
+      <li><a href="preguntas veterinarias.html">preguntas veterinarias</a></li>
+    </ul>
+  </header>
+
+  <!-- Contenido principal -->
+  <main>
+    <div class="form-container">
+      <h2>Agendar Cita</h2>
+            <form id="citasForm" action="#" method="post"> <!--se agrega un form porque el fomrulario no tenia un id-->
+        <select id="mascota" name="mascota" required>
+          <option value="">Selecciona la mascota</option>
+          <option value="firulais">Firulais</option>
+          <option value="michi">Michi</option>
+        </select>
+
+        <input type="date" id="fechaCita" name="fechaCita" required>
+        
+        <select id="horaCita" name="horaCita" required>
+          <option value="">Selecciona la hora</option>
+          <option value="08:00">08:00 AM</option>
+          <option value="09:00">09:00 AM</option>
+          <option value="10:00">10:00 AM</option>
+          <option value="11:00">11:00 AM</option>
+          <option value="14:00">02:00 PM</option>
+          <option value="15:00">03:00 PM</option>
+        </select>
+
+        <input type="text" id="razon" name="razon" placeholder="Razón de la visita (ej. consulta de rutina)" required>
+
+        <textarea id="historial" name="historial" placeholder="Historial médico o detalles adicionales" rows="4"></textarea>
+
+        <button type="submit">Agendar</button>
+            </form>
+    </div>
+  </main>
+
+  <script src="../../js/citas.js"></script>
+
+
+</body>
+</html>

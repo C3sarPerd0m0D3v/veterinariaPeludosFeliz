@@ -18,6 +18,36 @@ USE `sistema_usuarios`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `adopciones`
+--
+
+DROP TABLE IF EXISTS `adopciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `adopciones` (
+  `id_adopcion` int NOT NULL AUTO_INCREMENT,
+  `id_mascota` int NOT NULL,
+  `id_usuario` int NOT NULL,
+  `fecha_adopcion` date NOT NULL,
+  `notas` text,
+  PRIMARY KEY (`id_adopcion`),
+  UNIQUE KEY `id_mascota` (`id_mascota`),
+  KEY `fk_adopcion_usuario` (`id_usuario`),
+  CONSTRAINT `fk_adopcion_mascota` FOREIGN KEY (`id_mascota`) REFERENCES `registro_mascotas` (`id_mascota`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_adopcion_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `adopciones`
+--
+
+LOCK TABLES `adopciones` WRITE;
+/*!40000 ALTER TABLE `adopciones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `adopciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `categorias_productos`
 --
 
@@ -231,11 +261,11 @@ CREATE TABLE `registro_mascotas` (
   `nombre_mascota` varchar(100) NOT NULL,
   `especie` varchar(50) DEFAULT NULL,
   `raza` varchar(50) DEFAULT NULL,
-  `fecha_nacimiento` date DEFAULT NULL,
+  `edad` int DEFAULT NULL,
   PRIMARY KEY (`id_mascota`),
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `registro_mascotas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -244,7 +274,7 @@ CREATE TABLE `registro_mascotas` (
 
 LOCK TABLES `registro_mascotas` WRITE;
 /*!40000 ALTER TABLE `registro_mascotas` DISABLE KEYS */;
-INSERT INTO `registro_mascotas` VALUES (1,1,'Firulais','Perro','Mestizo','2022-05-10');
+INSERT INTO `registro_mascotas` VALUES (1,1,'Firulais','Perro','Mestizo',20220510),(2,1,'terry','perro',NULL,5),(3,1,'terry','perro',NULL,5),(4,1,'terry','perro',NULL,5),(5,1,'terry','perro',NULL,5),(6,1,'terry','perro',NULL,5),(7,1,'taquito','gato',NULL,3),(8,1,'juguete','perro',NULL,2);
 /*!40000 ALTER TABLE `registro_mascotas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -285,4 +315,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-11 16:03:33
+-- Dump completed on 2025-09-12 17:27:10

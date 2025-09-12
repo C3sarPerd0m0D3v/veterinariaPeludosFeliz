@@ -1,0 +1,203 @@
+:root {
+  --primary: #4da6ff;       /* azul principal */
+  --secondary: #f0f4f8;     /* gris muy claro */
+  --text-dark: #1e2a38;     /* gris azulado oscuro */
+  --accent: #ffb84d;        /* acento naranja */
+  --dark: #0f1419;          /* casi negro */
+}
+
+/* ===========================
+   RESET Y CUERPO
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--secondary);
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+header {
+  width: 100%;
+  background: #cfa974; 
+  padding: 1rem 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+header ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+header ul li a:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   HERO
+=========================== */
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)),
+              url("../img/fondomascota.webp") center/cover no-repeat;
+  color: white;
+}
+
+.hero img {
+  max-width: 280px;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+/* ===========================
+   CARRUSEL
+=========================== */
+.carrusel-container {
+  position: relative;
+  width: 90%;
+  max-width: 1100px;
+  margin: 2rem auto;
+  overflow: hidden;
+}
+
+.carrusel {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carrusel-item {
+  flex: 0 0 33.333%;
+  padding: 0 12px;
+}
+
+.carrusel-item a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.carrusel img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.carrusel img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+/* Botones laterales */
+.carrusel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.carrusel-btn.prev {
+  left: 10px;
+}
+
+.carrusel-btn.next {
+  right: 10px;
+}
+
+.carrusel-btn:hover {
+  background: var(--accent);
+  transform: scale(1.1);
+}
+
+/* Botón dentro de cada card */
+.btn-carrusel {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: var(--primary);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-carrusel:hover {
+  background: var(--accent);
+  transform: scale(1.05);
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+.footer {
+  background: var(--dark);
+  color: #ccc;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer a:hover {
+  color: var(--accent);
+}

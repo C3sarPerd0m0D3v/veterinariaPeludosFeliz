@@ -1,0 +1,229 @@
+:root {
+  /* ====== Variables de color y estilos base ====== */
+  --primary: #cfa974;        /* café claro */
+  --secondary: #fffaf0;      /* beige/blanco cálido */
+  --text-dark: #c19d83;      /* marrón oscuro para texto */
+  --panel-bg: rgba(255,250,240,0.95); /* panel translúcido */
+  --gold: #c19866;           /* dorado para header y botones */
+  --dark: #1b1b1b;
+}
+
+/* ===========================
+   RESET Y CUERPO
+=========================== */
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;  /* tipografía uniforme */
+  background: 
+    linear-gradient(rgb(0 0 0 / 30%), rgba(106, 56, 56, 0.37)), 
+    url('../img/fondomascota.webp') center/cover fixed no-repeat; 
+  /* Fondo con degradado oscuro + imagen fija */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+header {
+  width: 100%;
+  background: rgba(49, 34, 21, 0.62); /* color semitransparente */
+  box-shadow: 0 4px 12px rgba(0,0,0,.4); /* sombra inferior */
+  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  color: var(--gold);
+  margin: 0;
+  font-size: 2rem;
+}
+
+header p {
+  color: var(--secondary);
+  margin: 5px 0 0;
+  font-size: 1.1rem;
+}
+
+/* ===========================
+   CONTENEDOR LOGIN
+=========================== */
+.login-wrap {
+  flex: 1;                      /* ocupa el espacio disponible debajo del header */
+  display: flex;
+  align-items: center;           /* centra verticalmente */
+  justify-content: center;       /* centra horizontalmente */
+  padding: 80px;
+}
+
+/* ===========================
+   TARJETA DE LOGIN
+=========================== */
+.login-card {
+  background: var(--panel-bg);   /* panel translúcido */
+  padding: 48px;
+  border-radius: 12px;
+  width: 280px;
+  box-shadow: 0 8px 30px rgba(43, 43, 43, 0.6);
+  text-align: center;
+}
+
+.login-card h2 {
+  color: var(--gold);
+  margin: 0 0 40px;
+}
+
+/* ===========================
+   CAMPOS DE FORMULARIO
+=========================== */
+.login-card input {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 2px solid rgba(255,204,0,0.25);
+  background: rgba(224, 224, 224, 0.6);
+  color: var(--text-dark);
+  box-sizing: border-box;
+  outline: none;
+}
+
+.login-card input:focus {
+  border-color: var(--gold); /* resalta al enfocar */
+}
+
+/* ===========================
+   BOTÓN
+=========================== */
+.login-card button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background: var(--gold);
+  color: var(--text-dark);
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-card button:hover {
+  transform: scale(1.05); /* animación sutil */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+
+
+:root{
+  --primary: #cfa974;       /* café claro */
+  --secondary: #fffaf0;     /* beige/blanco cálido */
+  --text-dark: #c19d83;     /* marrón oscuro para texto */
+  --panel-bg: rgba(255,250,240,0.95); /* panel translúcido */
+  --gold: #c19866;          /* dorado para header y botones */
+  --dark: #1b1b1b;
+}
+
+/* ===========================
+   RESET Y CUERPO
+=========================== */
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;  /* tipografía uniforme */
+  background: linear-gradient(rgb(0 0 0 / 30%), rgba(106, 56, 56, 0.371)), 
+              url('../img/fondomascota.webp') center/cover fixed no-repeat; /* fondo uniforme */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+header {
+  width: 100%;
+  background: rgba(49, 34, 21, 0.624);
+  box-shadow: 0 4px 12px rgba(0,0,0,.4);
+  text-align: center;
+  padding: 10px 0; 
+  margin-bottom: 20px;
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 12px;
+  margin: 0;
+}
+
+header ul li a {
+  text-decoration: none;
+  color: #362c1d;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: rgba(71, 35, 35, 0.303);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+header ul li a:hover {
+  transform: scale(2.05);
+  box-shadow: 0 60px 16px rgba(178, 178, 178, 0.6);
+}
+
+
+.login-wrap {
+  flex: 1;                      /* ocupa todo el espacio sobrante debajo del header */
+  display: flex;
+  align-items: center;          /* centra verticalmente */
+  justify-content: center;      /* centra horizontalmente */
+  padding: 80px;
+}
+
+.login-card {
+  background: var(--panel-bg); /* panel translúcido uniforme */
+  padding: 48px;
+  border-radius: 12px;
+  width: 250px;
+  box-shadow: 0 8px 30px rgba(43, 43, 43, 0.6);
+  text-align: center;
+}
+
+.login-card h2 {
+  color: var(--gold);
+  margin: 0 0 60px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 2px solid rgba(255,204,0,0.25);
+  background: rgba(224, 224, 224, 0.6);
+  color: var(--text-dark);
+  box-sizing: border-box;
+}
+
+.login-card button {
+  width: 100%;
+  margin-top: 30px;
+  padding: 10px;
+  background: var(--gold);
+  color: var(--text-dark);
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.login-card button:hover {
+  transform: scale(3.03);
+}

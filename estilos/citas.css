@@ -1,0 +1,133 @@
+:root {
+  --primary: #cfa974;       /* café claro */
+  --secondary: #fffaf0;     /* beige/blanco cálido */
+  --text-dark: #4b382a;     /* marrón oscuro para texto */
+  --panel-bg: rgba(255,250,240,0.95); /* panel translúcido */
+  --gold: #c19866;          /* dorado para header y botones */
+  --dark: #1b1b1b;
+}
+
+/* ===========================
+   BODY Y CUERPO
+=========================== */
+body {
+  margin: auto;
+  font-family: "Arial", sans-serif;  /* tipografía uniforme */
+  background: linear-gradient(rgb(0 0 0 / 55%), rgb(54 32 8 / 65%)), 
+              url('../img/fondomascota.webp') center/cover fixed no-repeat; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+header {
+  width: 100%;
+  background: rgb(198 143 85 / 75%);
+  box-shadow: 0 2px 2px rgb(232 172 125 / 70%);
+  text-align: center;
+  padding: 50px 0; 
+  margin-bottom: 0px;
+}
+header h1 {
+  color: #c9a572;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.548);
+  margin: aauto;
+  font-size: 2rem; /* más grande */
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  padding: 43;
+  margin: 0;
+}
+
+header ul li a {
+  text-decoration: none;
+  color: #e2d4c0;
+  font-weight: bold;
+  padding: 20px 62px;
+  border-radius: 4px;
+  background: rgba(166, 134, 99, 0.745);
+  box-shadow: 0 2px 2px rgba(132, 102, 79, 0.849);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+header ul li a:hover {
+  transform: scale(4.05);
+  box-shadow: 0 6px 16px rgba(170, 122, 122, 0.783);
+}
+
+/* ===========================
+   FORMULARIO DE CITAS
+=========================== */
+.form-container {
+  background: var(--panel-bg);
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(55, 55, 55, 0.827);
+  width: 380px;
+  text-align: center;
+  color: var(--text-dark);
+}
+
+.form-container h2 {
+  color: var(--gold);
+  margin-bottom: 20px;
+  font-family: "Arial", sans-serif;
+}
+
+.form-container form input,
+.form-container form select,
+.form-container form textarea,
+.form-container form button {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 2px solid rgba(193,152,102,0.25);
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: "Arial", sans-serif;
+}
+
+.form-container form input,
+.form-container form select,
+.form-container form textarea {
+  background: rgba(224,224,224,0.6);
+  color: var(--text-dark);
+}
+
+.form-container form input::placeholder,
+.form-container form textarea::placeholder {
+  color: #7a6e68;
+}
+
+.form-container form button {
+  background: var(--gold);
+  color: var(--text-dark);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.form-container form button:hover {
+  transform: scale(1.03);
+  background: #d4a56b;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 480px) {
+  .form-container {
+    width: 90%;
+    padding: 20px;
+  }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinaria Peludos</title>
+    <link rel="stylesheet" href="../estilos/menu.css">
+</head>
+<body>
+
+    <!-- Menú -->
+   <header>
+    <ul>
+      <li><a href="menu.html">menu</a></li>
+      <li><a href="#">servicios veterinarios</a></li>
+      <li><a href="contacto.html">contacto</a></li>
+      <li><a href="preguntasveterinarias.html">preguntas veterinarias</a></li>
+    </ul>
+  </header>
+
+    <!-- HERO: bienvenida con fondo -->
+    <section class="hero">
+        <img src="../img/personaje.png" alt="Personaje" class="hero-personaje">
+        <h1 class="hero-titulo">Veterinaria Peludos Felices</h1>
+        <p class="hero-texto">Bienvenido de nuevo, <strong id="nombre-usuario-activo"></strong></p>
+    </section>
+
+<!-- Carrusel -->
+<div class="carrusel-container" id="miCarrusel">
+  <div class="carrusel">
+    <!-- Originales -->
+    <div class="carrusel-item">
+      <a href="adoptar.html">
+        <img src="../img/adoptar.jpg" alt="adoptar">
+        <button class="btn-carrusel">Adoptar</button>
+      </a>
+    </div>
+    <div class="carrusel-item">
+      <a href="citas.html">
+        <img src="../img/citas.jpg" alt="citas">
+        <button class="btn-carrusel">Citas</button>
+      </a>
+    </div>
+    <div class="carrusel-item">
+      <a href="registrodeingreso.html">
+        <img src="../img/ingresardatos.jpg" alt="ingreso">
+        <button class="btn-carrusel">Ingreso</button>
+      </a>
+    </div>
+
+    <!-- Clonados para loop -->
+    <div class="carrusel-item">
+      <a href="adoptar.html">
+        <img src="../img/adoptar.jpg" alt="adoptar">
+        <button class="btn-carrusel">Adoptar</button>
+      </a>
+    </div>
+    <div class="carrusel-item">
+      <a href="citas.html">
+        <img src="../img/citas.jpg" alt="citas">
+        <button class="btn-carrusel">Citas</button>
+      </a>
+    </div>
+    <div class="carrusel-item">
+      <a href="registrodeingreso.html">
+        <img src="../img/ingresardatos.jpg" alt="ingreso">
+        <button class="btn-carrusel">Ingreso</button>
+      </a>
+    </div>
+  </div>
+
+  <!-- Botones laterales -->
+  <button class="carrusel-btn prev" aria-label="Anterior">❮</button>
+  <button class="carrusel-btn next" aria-label="Siguiente">❯</button>
+</div>
+    <!-- Footer -->
+    <footer class="footer">
+      <p>
+        © 2025 Veterinaria Peludos Felices | 
+        <a href="contacto.html">Contáctanos</a>
+      </p>
+    </footer>    
+</body>
+   <script src="../js/menu.js"></script>
+</html>
+
+
+
+<!--<script>
+        let indice = 0;
+        const items = document.querySelectorAll('.carrusel-item');
+
+        function moverCarrusel() {
+            indice++;
+            if (indice >= items.length) {
+                indice = 0;
+            }
+            const desplazamiento = -indice * 50; 
+            document.querySelector('.carrusel').style.transform = `translateX(${desplazamiento}%)`;
+        }
+
+        setInterval(moverCarrusel, 3000);
+    </script>

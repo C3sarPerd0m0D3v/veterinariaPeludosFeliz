@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Peludos Felices - Login</title>
+  <link rel="stylesheet" href="../estilos/login.css">
+</head>
+<body>
+<header>
+  <h1>Bienvenido</h1>
+  <p id="welcomeHeader">Inicio de sesión</p>
+</header>
+
+<div class="login-wrap" id="loginWrap">
+  <div class="login-card">
+    <h2>Ingresa tus datos</h2>
+    
+    <form id="loginForm" action="menu.html" method="get">
+      <input id="username" name="username" type="text" placeholder="Nombre de usuario" required />
+      <input id="password" name="password" type="password" placeholder="Contraseña" required />
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+</div>
+
+<script src="../js/login.js"></script> <!-- se agrega ruta -->
+
+</body>
+</html>

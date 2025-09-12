@@ -1,12 +1,12 @@
 # 🐾 Veterinaria "Peludos Felices"
 
-(img/headerREADME.jpg) 
+![Encabezado](img/headerREADME.jpg) 
 
 ![Estado](https://img.shields.io/badge/estado-en%20desarrollo-green.svg)
 
 ### Diagrama Entidad-Relación
 
-(DB/diagramaEER.png)
+![Diagrama de la Base de Datos](DB/diagramaEER.png)
 
 Un AppWeb para la gestion de citas, mascotas y pacientes de la clinica veterinaria "Peludos Felices" Este proyecto integra un front-end interactivo con un backend en Django y una base de datos MySQL con el objetivo de mostrar logros obtenidos durante el curso de Python en Fusalmo.
 

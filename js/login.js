@@ -97,7 +97,8 @@ miFormulario.addEventListener("submit", function (evento) {
 
         if (data.success) {
 
-            localStorage.setItem("usuario", usuario); // guardamos el usuario solo si el login es correcto
+            localStorage.setItem("usuario", usuario);
+            localStorage.setItem("usuario_id", data.usuario_id); // guardamos el usuario solo si el login es correcto
             
             // usamos esta funcion para dar un tiempo para que se guarde el usuario en el navegador
             // y entonces lo mandamos a la pagina del menu principal

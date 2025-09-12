@@ -23,8 +23,8 @@ def login_view(request):
             resultado = cursor.fetchone()
 
         if resultado:
-            
-            return JsonResponse({'success': True, 'message': 'Inicio de sesión exitoso'})
+            id_del_usuario = resultado[0]
+            return JsonResponse({'success': True, 'message': 'Inicio de sesión exitoso', 'usuario_id': id_del_usuario})
         else:
             #este es el mensaje de alerta si el usuario es != de la base de datos
             return JsonResponse({'success': False, 'message': 'Usuario o contraseña incorrectos'})
@@ -34,3 +34,33 @@ def login_view(request):
     except Exception as e:
         return JsonResponse({'success': False, 'message': f'Error en el servidor: {e}'}, status=500)
 
+@csrf_exempt
+def registrar_mascota(request):
+    if request.method != 'POST':
+        return JsonResponse({'success': False, 'message': 'Método no permitido'}, status=405)
+
+    try:
+        data = json.loads(request.body)
+        
+        # Obtenemos los datos del JavaScript
+        id_usuario = data.get('id_usuario')
+        nombre_mascota = data.get('nombreMascota')
+        edad = data.get('edadMascota')
+        especie = data.get('especie')
+        
+        # Validamos que los datos esenciales estén presentes
+        if not all([id_usuario, nombre_mascota, edad, especie]):
+             return JsonResponse({'success': False, 'message': 'Faltan datos requeridos'}, status=400)
+
+        with connection.cursor() as cursor:
+            query = """
+                INSERT INTO registro_mascotas (id_usuario, nombre_mascota, edad, especie)
+                VALUES (%s, %s, %s, %s)
+            """
+            cursor.execute(query, [id_usuario, nombre_mascota, edad, especie])
+            connection.commit()
+        
+        return JsonResponse({'success': True, 'message': 'Mascota registrada con éxito'})
+
+    except Exception as e:
+        return JsonResponse({'success': False, 'message': f'Error en el servidor: {e}'}, status=500)

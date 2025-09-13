@@ -5,7 +5,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db import connection 
 from django.shortcuts import render
 
-# Create your views here.
 @csrf_exempt
 def registrar_mascota(request):
     if request.method != 'POST':
@@ -14,13 +13,15 @@ def registrar_mascota(request):
     try:
         data = json.loads(request.body)
         
-        # Obtenemos los datos del JavaScript
+        # obtenemos los datos de login
+        
         id_usuario = data.get('id_usuario')
         nombre_mascota = data.get('nombreMascota')
         edad = data.get('edadMascota')
         especie = data.get('especie')
         
-        # Validamos que los datos esenciales estén presentes
+        # validamos que los datos existan
+        
         if not all([id_usuario, nombre_mascota, edad, especie]):
              return JsonResponse({'success': False, 'message': 'Faltan datos requeridos'}, status=400)
 

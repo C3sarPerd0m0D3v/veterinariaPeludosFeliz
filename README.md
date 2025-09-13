@@ -84,3 +84,10 @@ Una vez que ambos servidores (Django y Live Server (live server es opcional)) es
 1.  Navegar a la pagina de `login.html` en el navegador
 2.  Utiliza un usuario y contraseña existentes en la base de datos para iniciar sesion
 3.  Explorar la aplicacion
+
+## Credenciales para pruebas 
+ 
+    Usuario		Contraseña
+1. Juan Pérez	farmacia123	
+2. María Gómez 	vet456
+3. Carlos Ruiz	admin789

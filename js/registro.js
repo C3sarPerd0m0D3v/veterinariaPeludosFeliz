@@ -47,7 +47,7 @@ formRegistro.addEventListener('submit', function(evento) {
   };
 
   // luego se usuaria el fetch para enviar el objeto a una url o ruta del servidor
-  fetch('http://127.0.0.1:8000/api/mascotas/registrar/', {
+  fetch('http://127.0.0.1:8000/mascotas/registrar/', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'

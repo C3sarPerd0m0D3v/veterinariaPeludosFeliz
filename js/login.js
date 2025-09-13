@@ -63,7 +63,7 @@ miFormulario.addEventListener("submit", function (evento) {
     // ahora bien si los campos estan llenos ahora si contactamos al servidor
     // hacemos la peticion al servidor usando fetch
 
-    fetch("http://127.0.0.1:8000/api/login/", {
+    fetch("http://127.0.0.1:8000/usuarios/login/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

@@ -72,8 +72,10 @@ Sigue estos pasos para levantar el proyecto en un entorno local.
     python manage.py runserver
     ```
     El backend estara corriendo en `http://127.0.0.1:8000`.
+    (opcional) Inicializar AppWeb con iniciar.bat desde la carpeta de archivos del proyecto
+    requisito : tener previamente instalado dentro del proyecto en la terminal : npm install -g live-server
 
-6.  **Front-End:**
+7.  **Front-End:**
     Abre el archivo `login.html` usando la extensión "Live Server" de vs code para que corra en un puerto como `5501`.
 
 ---

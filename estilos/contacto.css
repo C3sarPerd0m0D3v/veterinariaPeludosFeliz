@@ -5,149 +5,217 @@
   --panel-bg: rgba(255,250,240,0.95); /* panel translúcido */
   --gold: #c19866;          /* dorado para header y botones */
   --dark: #1b1b1b;
+  --light: #ffffff;         /* blanco */
+  --accent: #d4a56b;        /* dorado más vivo para hover */
+  --shadow-medium: rgba(0,0,0,0.2); /* sombra estándar */
 }
 
 /* ===========================
-   RESET Y CUERPO
+   BODY Y CUERPO
 =========================== */
 body {
-  margin: auto;
-  font-family: "Arial", sans-serif;  /* tipografía uniforme */
-  background: linear-gradient(rgb(0 0 0 / 55%), rgb(54 32 8 / 65%)), 
-              url('../img/fondomascota.webp') center/cover fixed no-repeat; 
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--secondary) url("../img/fondomascota.webp") center/cover fixed no-repeat;
+  color: var(--text-dark);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  min-height: 100vh;
+
+  max-width: 100vw;   /* evita overflow horizontal */
+  overflow-x: hidden; /* elimina scroll horizontal */
 }
 
 /* ===========================
-   HEADER
+   TOP-BAR (REDES SOCIALES)
+=========================== */
+.top-bar {
+  width: 98%;
+  background: #1d1d1d;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.social-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--light);
+  color: #333;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.social-icon:hover {
+  background: var(--primary);
+  color: var(--light);
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   HEADER PRINCIPAL
 =========================== */
 header {
-  width: 100%;
-  background: rgb(140, 106, 74);
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  padding: 50px 0; 
-  margin-bottom: 0px;
+  width: 100%; 
+  background: var(--accent);
+  padding: 0.1rem 0;
+  box-shadow: 0 2px 8px var(--shadow-medium);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-header h1 {
-  color: #c9a572;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.548);
-  margin: aauto;
-  font-size: 2rem; /* más grande */
+
+header nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: flex-end;
 }
 
 header ul {
   list-style: none;
   display: flex;
-  justify-content: center;
-  gap: 100px;
-  padding: 43;
-  margin: 0;
+  gap: 1.5rem;
 }
 
 header ul li a {
   text-decoration: none;
-  color: #e2d4c0;
-  font-weight: bold;
-  padding: 20px 62px;
-  border-radius: 4px;
-  background: rgba(166, 134, 99, 0.745);
-  box-shadow: 0 2px 2px rgba(132, 102, 79, 0.849);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: var(--light);
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: 0.3s ease;
 }
 
 header ul li a:hover {
-  transform: scale(4.05);
-  box-shadow: 0 6px 16px rgba(170, 122, 122, 0.783);
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
 }
 
 /* ===========================
-   CONTENIDO PRINCIPAL
+   CONTENEDOR PRINCIPAL (CONTACTO)
 =========================== */
 main {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  padding: 3rem 1rem;
   width: 100%;
-  padding: 20px;
 }
 
-/* ===========================
-   CONTENEDOR CONTACTO
-=========================== */
 .contact-container {
-  background: var(--panel-bg);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(55, 55, 55, 0.827);
-  width: 400px;
-  text-align: left;
-  color: var(--text-dark);
+  background: var(--panel-bg); /* panel translúcido */
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  max-width: 350px;
+  width: 60%;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  text-align: center;
+  backdrop-filter: blur(6px);
 }
 
+/* Títulos y texto */
 .contact-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
   color: var(--gold);
-  margin-bottom: 16px;
-  text-align: center;
-  font-family: "Arial", sans-serif;
 }
 
 .contact-container .intro {
-  margin-bottom: 20px;
-  line-height: 1.6;
-  font-family: "Arial", sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+/* ===========================
+   INFO DE CONTACTO
+=========================== */
+.contact-info {
+  text-align: left;
+  margin-bottom: 2rem;
 }
 
 .contact-info p {
-  margin-bottom: 12px;
-  font-family: "Arial", sans-serif;
+  margin: 0.8rem 0;
+  font-size: 1rem;
+}
+
+.contact-info strong {
+  color: var(--accent);
 }
 
 .contact-info a {
   color: var(--primary);
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-weight: 600;
 }
 
 .contact-info a:hover {
-  color: var(--gold);
+  text-decoration: underline;
 }
 
 /* ===========================
    REDES SOCIALES
 =========================== */
+.social {
+  margin-top: 2rem;
+}
+
 .social h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
   color: var(--gold);
-  margin-bottom: 12px;
-  font-family: "Arial", sans-serif;
 }
 
 .social ul {
   list-style: none;
-  padding: 0;
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0;
 }
 
 .social ul li a {
   text-decoration: none;
-  background: rgba(106,106,106,0.3);
-  padding: 6px 10px;
-  border-radius: 6px;
+  font-size: 1rem;
   color: var(--text-dark);
-  font-weight: bold;
-  display: inline-block;
-  transition: transform 0.2s ease, background 0.3s ease;
+  font-weight: 600;
+  transition: color 0.3s, transform 0.2s;
 }
 
 .social ul li a:hover {
-  background: var(--gold);
-  color: var(--text-dark);
-  transform: scale(1.1);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+.footer {
+  background: var(--dark);
+  color: #ccc;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer a:hover {
+  color: var(--accent);
 }
 
 /* ===========================
@@ -159,8 +227,8 @@ main {
     padding: 20px;
   }
 
-  .social ul {
+  header ul {
     flex-direction: column;
-    gap: 8px;
+    gap: 1rem;
   }
 }

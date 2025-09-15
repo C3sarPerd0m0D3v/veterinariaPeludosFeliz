@@ -1,117 +1,159 @@
 :root {
-  --primary: #cfa974;       
-  --secondary: #fffaf0;     
-  --text-dark: #4b382a;     
-  --panel-bg: rgba(255,250,240,0.95); 
-  --gold: #c19866;          
+  --primary: #cfa974;       /* café claro */
+  --secondary: #fffaf0;     /* beige cálido */
+  --text-dark: #4b382a;     /* marrón oscuro para texto */
+  --panel-bg: rgba(255,250,240,0.95); /* panel translúcido */
+  --gold: #c19866;          /* dorado para header y botones */
   --dark: #1b1b1b;
+  --light: #ffffff;         /* blanco */
+  --accent: #d4a56b;        /* dorado más vivo para hover */
+  --shadow-medium: rgba(0,0,0,0.2); /* sombra estándar */
 }
 
 /* ===========================
-   BODY Y CUERPO
+   RESETEO Y BODY
 =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  margin: auto;
-  font-family: "Arial", sans-serif;  /* tipografía uniforme */
-  background: linear-gradient(rgb(0 0 0 / 55%), rgb(54 32 8 / 65%)), 
-              url('../img/fondomascota.webp') center/cover fixed no-repeat; 
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)),
+              url("../img/fondomascota.webp") center/cover fixed no-repeat;
+  color: var(--text-dark);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  min-height: 100vh;
 }
 
 /* ===========================
-   HEADER
+   TOP-BAR (REDES SOCIALES)
+=========================== */
+.top-bar {
+  width: 100%;
+  background: #1d1d1d;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.social-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--light);
+  color: #333;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.social-icon:hover {
+  background: var(--primary);
+  color: var(--light);
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   HEADER PRINCIPAL
 =========================== */
 header {
-  width: 100%;
-  background: rgb(158, 115, 70);
-  box-shadow: 0 1px 2px rgba(3, 2, 1, 0.518);
-  text-align: center;
-  padding: 50px 0; 
-  margin-bottom: 0px;
+  width: 100%; 
+  background: var(--accent);
+  padding: 1rem 0;
+  box-shadow: 0px 3px var(--shadow-medium);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-header h1 {
-  color: #c9a572;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.548);
-  margin: aauto;
-  font-size: 2rem; /* más grande */
+
+header nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: flex-end;
 }
 
 header ul {
   list-style: none;
   display: flex;
-  justify-content: center;
-  gap: 100px;
-  padding: 43;
-  margin: 0;
+  gap: 1.5rem;
 }
 
 header ul li a {
   text-decoration: none;
-  color: #e2d4c0;
-  font-weight: bold;
-  padding: 20px 62px;
-  border-radius: 4px;
-  background: rgba(163, 137, 108, 0);
-  box-shadow: 0 px 2px rgba(132, 102, 79, 0.849);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: var(--light);
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: 0.3s ease;
 }
 
 header ul li a:hover {
-  transform: scale(4.05);
-  box-shadow: 0 6px 16px rgba(170, 122, 122, 0.783);
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
 }
 
 /* ===========================
-   CONTENIDO PRINCIPAL
+   MAIN
 =========================== */
 main {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  width: 100%;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
 /* ===========================
-   FORMULARIO DE ADOPCIÓN
+   FORMULARIO
 =========================== */
 .form-container {
   background: var(--panel-bg);
-  padding: 28px;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(55, 55, 55, 0.827);
-  width: 380px;
+  padding: 30px;
+  border-radius: 16px; /* copia del CSS original */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  width: 350px; /* copia exacta */
   text-align: center;
-  color: var(--text-dark);
+  animation: fadeIn 0.6s ease;
 }
 
 .form-container h2 {
   color: var(--gold);
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
+}
+
+.form-container .intro {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
 }
 
 .form-container input,
 .form-container select,
 .form-container textarea,
 .form-container button {
-  width: 100%;
-  padding: 10px 12px;
+  width: 80%;
+  padding: 10px 5px;
   margin: 8px 0;
   border-radius: 8px;
-  border: 2px solid rgba(255,204,0,0.25);
-  box-sizing: border-box;
+  border: 2px solid rgba(193,152,102,0.25);
   font-size: 1rem;
-  font-family: "Arial", sans-serif;
+  font-family: inherit;
 }
 
 .form-container input,
 .form-container select,
 .form-container textarea {
-  background: rgba(253, 253, 253, 0.764);
-  color: #5d5450;
+  background: rgba(224,224,224,0.6);
+  color: var(--text-dark);
 }
 
 .form-container input::placeholder,
@@ -121,35 +163,36 @@ main {
 
 .form-container button {
   background: var(--gold);
-  color: #5d5d5d;
-  border: none;
+  color: var(--light);
   font-weight: bold;
+  border: none;
   cursor: pointer;
   transition: transform 0.2s ease, background 0.3s ease;
 }
 
 .form-container button:hover {
   transform: scale(1.03);
-  background: #d4a56b;
+  background: var(--accent);
 }
 
 /* ===========================
-   BOTÓN PARA ABRIR MODAL
+   BOTÓN PARA MODAL
 =========================== */
 .btn {
   display: inline-block;
   background: var(--primary);
-  color: white;
+  color: var(--light);
   padding: 10px 15px;
-  border-radius: 6px;
+  border-radius: 8px;
   text-decoration: none;
   margin: 10px 0;
-  transition: transform 0.2s ease, background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btn:hover {
-  transform: scale(1.03);
   background: var(--gold);
+  color: var(--dark);
+  transform: scale(1.05);
 }
 
 /* ===========================
@@ -158,10 +201,9 @@ main {
 .modal {
   display: none;
   position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
   z-index: 1000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5);
 }
 
 .modal:target {
@@ -171,14 +213,14 @@ main {
 .modal-content {
   background: var(--panel-bg);
   margin: 5% auto;
-  padding: 20px;
-  border-radius: 12px;
+  padding: 25px;
+  border-radius: 16px;
   width: 80%;
   max-width: 600px;
   max-height: 80vh;
   overflow-y: auto;
   text-align: center;
-  color: var(--text-dark);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
 }
 
 .modal-content h3 {
@@ -188,12 +230,12 @@ main {
 
 .close {
   display: inline-block;
-  margin-top: 15px;
-  padding: 5px 10px;
+  margin-top: 20px;
+  padding: 8px 15px;
   background: var(--dark);
   color: white;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 6px;
   transition: background 0.3s ease;
 }
 
@@ -203,7 +245,7 @@ main {
 }
 
 /* ===========================
-   GALERÍA DE MASCOTAS
+   GALERÍA
 =========================== */
 .galeria {
   display: flex;
@@ -213,13 +255,13 @@ main {
 }
 
 .galeria .card {
-  background: rgba(224,224,224,0.2);
+  background: var(--panel-bg);
+  border: 2px solid rgba(193,152,102,0.2);
   padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
+  border-radius: 12px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-align: center;
-  text-decoration: none; 
+  cursor: pointer;
 }
 
 .galeria .card img {
@@ -227,29 +269,18 @@ main {
   height: 120px;
   object-fit: cover;
   border-radius: 8px;
-  display: block;
-  margin: 0 auto;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 .galeria .card p {
   margin-top: 8px;
   font-weight: bold;
-  color: var(--gold);
+  color: var(--text-dark);
 }
 
 .galeria .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.6);
-}
-
-/* ===========================
-   MASCOTA SELECCIONADA
-=========================== */
-#mascotasSeleccion p {
-  margin-top: 10px;
-  font-weight: bold;
-  color: var(--gold);
+  transform: scale(1.06);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
 }
 
 /* ===========================
@@ -265,4 +296,12 @@ main {
     width: 90px;
     height: 90px;
   }
+}
+
+/* ===========================
+   ANIMACIONES
+=========================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }

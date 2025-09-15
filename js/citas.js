@@ -61,3 +61,33 @@ formCitas.addEventListener('submit', function(evento) {
   }
 
 });
+
+ 
+/* ===========================================
+   LOGICA ADICIONAL: VENTANA EMERGENTE
+   =========================================== */
+ 
+// referencias a la ventana emergente
+const overlay = document.getElementById('overlay');
+const cerrarBtn = document.getElementById('cerrarBtn');
+const mensajePopup = document.getElementById('mensajePopup');
+ 
+// botón independiente para generar cita (no afecta el submit principal)
+const generarCitaBtn = document.getElementById('generarCitaBtn');
+ 
+generarCitaBtn.addEventListener('click', function() {
+  // obtenemos algunos valores del formulario (opcional)
+  const mascota = document.getElementById('mascota').value || "tu mascota";
+  const fecha = document.getElementById('fechaCita').value || "una fecha";
+  const hora = document.getElementById('horaCita').value || "una hora";
+ 
+  // mostramos ventana emergente
+  mensajePopup.textContent = `Se ha generado una cita para ${mascota} el ${fecha} a las ${hora}.`;
+  overlay.style.display = 'flex';
+});
+ 
+// cerrar la ventana emergente
+cerrarBtn.addEventListener('click', function() {
+  overlay.style.display = 'none';
+});
+ 

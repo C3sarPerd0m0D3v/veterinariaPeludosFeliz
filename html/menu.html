@@ -3,47 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veterinaria Peludos</title>
+    <title>Veterinaria Peludos Felices</title>
     <link rel="stylesheet" href="../estilos/menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-    <!-- Menú -->
-   <header>
+<!-- Franja superior con redes sociales -->
+<div class="top-bar">
+  <a href="https://www.facebook.com" target="_blank" class="social-icon">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://www.instagram.com" target="_blank" class="social-icon">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.twitter.com" target="_blank" class="social-icon">
+    <i class="fab fa-twitter"></i>
+  </a>
+  <a href="https://www.youtube.com" target="_blank" class="social-icon">
+    <i class="fab fa-youtube"></i>
+  </a>
+</div>
+
+<!-- Header principal -->
+<header>
+  <nav>
     <ul>
       <li><a href="menu.html">menu</a></li>
       <li><a href="#">servicios veterinarios</a></li>
       <li><a href="contacto.html">contacto</a></li>
       <li><a href="preguntasveterinarias.html">preguntas veterinarias</a></li>
+    
+        <!-- Botón especial de donación -->
+<li><button class="donar-btn">Donar 💙</button></li>
     </ul>
-  </header>
+  </nav>
+</header>
 
-    <!-- HERO: bienvenida con fondo -->
-    <section class="hero">
-        <img src="../img/personaje.png" alt="Personaje" class="hero-personaje">
-        <h1 class="hero-titulo">Veterinaria Peludos Felices</h1>
-        <p class="hero-texto">Bienvenido de nuevo, <strong id="nombre-usuario-activo"></strong></p>
-    </section>
+</header>
 
-<!-- Carrusel -->
+
+<!-- HERO: bienvenida con fondo -->
+<section class="hero">
+    <img src="../img/personaje.png" alt="Personaje" class="hero-personaje">
+    <h1 class="hero-titulo">Veterinaria Peludos Felices</h1>
+    <p class="hero-texto">Bienvenido de nuevo, <strong id="nombre-usuario-activo"></strong></p>
+</section>
+
 <div class="carrusel-container" id="miCarrusel">
   <div class="carrusel">
-    <!-- Originales -->
+    <!-- Ítems originales -->
     <div class="carrusel-item">
       <a href="adoptar.html">
-        <img src="../img/adoptar.jpg" alt="adoptar">
+        <img src="../img/icono2.png" alt="adoptar">
         <button class="btn-carrusel">Adoptar</button>
       </a>
     </div>
     <div class="carrusel-item">
       <a href="citas.html">
-        <img src="../img/citas.jpg" alt="citas">
+        <img src="../img/icono3.png" alt="citas">
         <button class="btn-carrusel">Citas</button>
       </a>
     </div>
     <div class="carrusel-item">
       <a href="registrodeingreso.html">
-        <img src="../img/ingresardatos.jpg" alt="ingreso">
+        <img src="../img/icono1.png" alt="ingreso">
         <button class="btn-carrusel">Ingreso</button>
       </a>
     </div>
@@ -51,53 +75,84 @@
     <!-- Clonados para loop -->
     <div class="carrusel-item">
       <a href="adoptar.html">
-        <img src="../img/adoptar.jpg" alt="adoptar">
+        <img src="../img/icono2.png" alt="adoptar">
         <button class="btn-carrusel">Adoptar</button>
       </a>
     </div>
     <div class="carrusel-item">
       <a href="citas.html">
-        <img src="../img/citas.jpg" alt="citas">
+        <img src="../img/icono3.png" alt="citas">
         <button class="btn-carrusel">Citas</button>
       </a>
     </div>
     <div class="carrusel-item">
       <a href="registrodeingreso.html">
-        <img src="../img/ingresardatos.jpg" alt="ingreso">
+        <img src="../img/icono1.png" alt="ingreso">
         <button class="btn-carrusel">Ingreso</button>
       </a>
     </div>
   </div>
 
-  <!-- Botones laterales -->
+  <!-- Botones laterales, fuera de .carrusel -->
   <button class="carrusel-btn prev" aria-label="Anterior">❮</button>
   <button class="carrusel-btn next" aria-label="Siguiente">❯</button>
 </div>
-    <!-- Footer -->
-    <footer class="footer">
-      <p>
-        © 2025 Veterinaria Peludos Felices | 
-        <a href="contacto.html">Contáctanos</a>
-      </p>
-    </footer>    
+
+   
+<!-- SECCIÓN SELECTION -->
+<section class="selection-section">
+  <div class="container">
+    <!-- Columna izquierda: imagen o ilustración -->
+    <div class="selection-img">
+      <img src="../img/fc8bf37058c8f2cba1d83427dcc38a0e.jpg" alt="Mascota 1">
+      <img src="../img/personaje.png" alt="Mascota 2">
+      <img src="../img/gato1.jpg" alt="Mascota 3">
+    </div>
+
+    <!-- Columna derecha: texto -->
+    <div class="selection-text">
+      <span class="subheading">Nuestros Servicios Destacados</span>
+      <h2>Cuidamos de tus peludos como en casa</h2>
+      <p>Ofrecemos servicios veterinarios completos, desde consultas hasta cuidados especiales. Nuestro equipo combina experiencia, amor por los animales y profesionalismo para garantizar que cada visita sea placentera y segura.</p>
+      
+      <ul class="list-services">
+        <li><span class="icon">🐾</span> Consulta general y vacunas</li>
+        <li><span class="icon">💉</span> Procedimientos y cirugías</li>
+        <li><span class="icon">❤️</span> Atención personalizada</li>
+        <li><span class="icon">🏥</span> Hospedaje y cuidados especiales</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>
+    © 2025 Veterinaria Peludos Felices | 
+    <a href="contacto.html">Contáctanos</a>
+  </p>
+</footer>    
+
+<script src="../js/menu.js"></script>
+
+<!-- MODAL DE DONACIONES -->
+<div class="modal" id="modalDonar">
+  <div class="modal-content">
+    <button class="modal-close" id="cerrarModal">&times;</button>
+    <h2>Elige tu forma de donar</h2>
+    <p>Apoya a nuestros peludos felices</p>
+
+    <a href="https://www.paypal.com/donate" target="_blank" class="donar-opcion paypal">PayPal</a>
+    <a href="https://www.mercadopago.com" target="_blank" class="donar-opcion mercadopago">Mercado Pago</a>
+    <a href="https://www.agricolabank.com" target="_blank" class="donar-opcion banco">Banco Agrícola</a>
+
+    <div class="modal-contacto">
+      <p>Veterinaria Peludos Felices</p>
+      <p>correo@veterinariapeludos.com</p>
+      <p>Cuenta: 1234-5678-9012</p>
+    </div>
+  </div>
+</div>
+
 </body>
-   <script src="../js/menu.js"></script>
 </html>
-
-
-
-<!--<script>
-        let indice = 0;
-        const items = document.querySelectorAll('.carrusel-item');
-
-        function moverCarrusel() {
-            indice++;
-            if (indice >= items.length) {
-                indice = 0;
-            }
-            const desplazamiento = -indice * 50; 
-            document.querySelector('.carrusel').style.transform = `translateX(${desplazamiento}%)`;
-        }
-
-        setInterval(moverCarrusel, 3000);
-    </script>

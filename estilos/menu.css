@@ -1,9 +1,12 @@
 :root {
   --primary: #4da6ff;       /* azul principal */
-  --secondary: #f0f4f8;     /* gris muy claro */
+  --secondary: #f9f9f9;     /* gris muy claro */
   --text-dark: #1e2a38;     /* gris azulado oscuro */
-  --accent: #ffb84d;        /* acento naranja */
-  --dark: #0f1419;          /* casi negro */
+  --accent: #cfa974;        /* dorado cálido */
+  --light: #ffffff;          /* blanco puro */
+  --dark: #0f1419;           /* casi negro */
+  --shadow-light: rgba(0,0,0,0.08);
+  --shadow-medium: rgba(0,0,0,0.15);
 }
 
 /* ===========================
@@ -15,46 +18,102 @@
   box-sizing: border-box;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
   background: var(--secondary);
   color: var(--text-dark);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  line-height: 1.6;
+  font-size: 16px;
 }
 
 /* ===========================
    HEADER
 =========================== */
+.top-bar {
+  background: #1d1d1d;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.social-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--light);
+  color: #333;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.social-icon:hover {
+  background: var(--primary);
+  color: var(--light);
+  transform: translateY(-2px);
+}
+
 header {
   width: 100%;
-  background: #cfa974; 
+  background: var(--accent);
   padding: 1rem 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px var(--shadow-medium);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
+header nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
 header ul {
   list-style: none;
   display: flex;
-  justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 header ul li a {
   text-decoration: none;
-  color: white;
+  color: var(--light);
   font-weight: 600;
   padding: 8px 14px;
-  border-radius: 6px;
-  transition: background 0.3s, transform 0.2s;
+  border-radius: 8px;
+  transition: 0.3s ease;
 }
 
 header ul li a:hover {
   background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+/* Botón de donaciones en header */
+.donar-btn {
+  background: #0088ff;
+  color: #fff !important;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.donar-btn:hover {
+  background: #0056b3;
   transform: translateY(-2px);
 }
 
@@ -68,27 +127,28 @@ header ul li a:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 4rem 1rem;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)),
+  padding: 5rem 1rem;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)),
               url("../img/fondomascota.webp") center/cover no-repeat;
-  color: white;
+  color: var(--light);
 }
 
 .hero img {
-  max-width: 280px;
+  max-width: 240px;
   margin-bottom: 1rem;
 }
 
 .hero h1 {
-  font-size: 2.8rem;
+  font-size: 3rem;
   margin-bottom: 0.5rem;
-  color: var(--accent);
-  text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+  color: var(--light);
+  font-weight: 700;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
 .hero p {
-  font-size: 1.2rem;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  font-size: 1.25rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
 /* ===========================
@@ -96,20 +156,24 @@ header ul li a:hover {
 =========================== */
 .carrusel-container {
   position: relative;
-  width: 90%;
+  width: 80%;
   max-width: 1100px;
-  margin: 2rem auto;
+  margin: 1rem auto;
   overflow: hidden;
 }
 
 .carrusel {
   display: flex;
   transition: transform 0.5s ease;
+  width: max-content;
 }
 
 .carrusel-item {
-  flex: 0 0 33.333%;
+  flex: 0 0 25%;
   padding: 0 12px;
+  box-sizing: border-box;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
 }
 
 .carrusel-item a {
@@ -119,20 +183,19 @@ header ul li a:hover {
 }
 
 .carrusel img {
-  width: 100%;
+  width: 90%;
   height: 230px;
   object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px var(--shadow-light);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .carrusel img:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 20px var(--shadow-medium);
 }
 
-/* Botones laterales */
 .carrusel-btn {
   position: absolute;
   top: 50%;
@@ -141,12 +204,12 @@ header ul li a:hover {
   height: 45px;
   border-radius: 50%;
   background: var(--primary);
-  color: #fff;
+  color: var(--light);
   font-size: 1.5rem;
   border: none;
   cursor: pointer;
   z-index: 10;
-  transition: background 0.3s, transform 0.2s;
+  transition: 0.3s ease;
 }
 
 .carrusel-btn.prev {
@@ -162,22 +225,147 @@ header ul li a:hover {
   transform: scale(1.1);
 }
 
-/* Botón dentro de cada card */
 .btn-carrusel {
   margin-top: 10px;
   padding: 8px 16px;
   background: var(--primary);
   border: none;
-  border-radius: 20px;
-  color: white;
-  font-size: 15px;
+  border-radius: 25px;
+  color: var(--light);
+  font-size: 14px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .btn-carrusel:hover {
   background: var(--accent);
   transform: scale(1.05);
+}
+
+/* ===========================
+   CARRUSEL ITEM SELECCIONADO
+=========================== */
+.carrusel-item.selected {
+  z-index: 5; /* sobre los demás */
+}
+
+.carrusel-item.faded {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* ===========================
+   SECCIÓN SELECTION
+=========================== */
+.selection-section {
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: var(--secondary);
+}
+
+.selection-section .container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.selection-img {
+  flex: 1 1 45%;
+  position: relative;
+  width: 100%;
+  height: 800px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.selection-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 0;
+}
+
+.selection-img img.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.selection-text {
+  flex: 1 1 50%;
+  background: var(--light);
+  border-left: 6px solid var(--accent);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 6px 18px var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.selection-text .subheading {
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.selection-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.selection-text p {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+}
+
+.selection-text .list-services {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.selection-text .list-services li {
+  display: flex;
+  align-items: center;
+  background: var(--secondary);
+  margin-bottom: 1rem;
+  padding: 0.9rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-light);
+  transition: 0.2s ease;
+}
+
+.selection-text .list-services li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--shadow-medium);
+}
+
+.selection-text .list-services .icon {
+  background: var(--primary);
+  color: var(--light);
+  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ===========================
@@ -188,8 +376,8 @@ header ul li a:hover {
   color: #ccc;
   text-align: center;
   padding: 1.5rem 1rem;
-  margin-top: auto;
   font-size: 0.9rem;
+  margin-top: auto;
 }
 
 .footer a {
@@ -199,5 +387,149 @@ header ul li a:hover {
 }
 
 .footer a:hover {
+  color: var(--accent);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 992px) {
+  .selection-section .container {
+    flex-direction: column;
+  }
+
+  .selection-img,
+  .selection-text {
+    flex: 1 1 100%;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .carrusel-item {
+    flex: 0 0 33.333%;
+  }
+}
+
+@media (max-width: 576px) {
+  header nav {
+    justify-content: center;
+  }
+
+  .carrusel-item {
+    flex: 0 0 80%;
+  }
+}
+
+/* ===========================
+   MODAL DE DONACIONES
+=========================== */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none; /* oculto por defecto */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--light);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 6px 20px var(--shadow-medium);
+  position: relative;
+}
+
+.modal-content h2 {
+  font-size: 1.8rem;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+}
+
+/* Botones de donación dentro del modal */
+.donar-opcion {
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--light);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  text-decoration: none;
+}
+
+.donar-opcion.paypal {
+  background: #003087; /* azul PayPal */
+}
+
+.donar-opcion.paypal:hover {
+  background: #005bbb;
+}
+
+.donar-opcion.mercadopago {
+  background: #009ee3; /* azul Mercado Pago */
+}
+
+.donar-opcion.mercadopago:hover {
+  background: #00bfff;
+}
+
+.donar-opcion.banco {
+  background: var(--primary);
+}
+
+.donar-opcion.banco:hover {
+  background: var(--accent);
+}
+
+/* Texto de cuenta o contacto debajo de los botones */
+.modal-contacto {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+/* Botón de cierre del modal */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--dark);
+  transition: 0.3s ease;
+}
+
+.modal-close:hover {
   color: var(--accent);
 }

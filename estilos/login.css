@@ -1,117 +1,176 @@
+/* ===========================
+   VARIABLES GLOBALES
+=========================== */
 :root {
-  /* ====== Variables de color y estilos base ====== */
-  --primary: #cfa974;        /* café claro */
-  --secondary: #fffaf0;      /* beige/blanco cálido */
-  --text-dark: #89796d;      /* marrón oscuro para texto */
+  --primary: #cfa974;       /* café claro */
+  --secondary: #fffaf0;     /* beige/blanco cálido */
+  --text-dark: #4b382a;     /* marrón oscuro */
   --panel-bg: rgba(255,250,240,0.95); /* panel translúcido */
-  --gold: #c19866;           /* dorado para header y botones */
-  --dark: #1b1b1b;
+  --gold: #c19866;          /* dorado para header y botones */
+  --dark: #1b1b1b;          
+  --light: #ffffff;         
+  --accent: #d4a56b;        
+  --shadow-medium: rgba(0,0,0,0.2); 
 }
 
 /* ===========================
-   RESET Y CUERPO
+   RESET Y BODY
 =========================== */
-body {
+* {
   margin: 0;
-  font-family: "Arial", sans-serif;  /* tipografía uniforme */
-  background: 
-    linear-gradient(rgb(0 0 0 / 30%), rgba(106, 56, 56, 0.37)), 
-    url('../img/fondomascota.webp') center/cover fixed no-repeat; 
-  /* Fondo con degradado oscuro + imagen fija */
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(rgba(0, 0, 0, 0.094), rgba(0,0,0,0.65)), 
+              url('../img/fondomascota.webp') center/cover fixed no-repeat;
+  color: var(--text-dark);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  max-width: 100vw;   /* evita overflow horizontal */
+  overflow-x: hidden; /* elimina scroll horizontal */
 }
 
 /* ===========================
-   HEADER
+   HEADER LOGIN
 =========================== */
 header {
-  width: 100%;
-  background: rgba(49, 34, 21, 0.62); /* color semitransparente */
-  box-shadow: 0 4px 12px rgba(0,0,0,.4); /* sombra inferior */
+  position: relative;
   text-align: center;
-  padding: 20px 0;
-  margin-bottom: 20px;
+  padding: 1rem 2rem 4rem;      /* header alto */
+  background: #181818;  
+  color: var(--light);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  overflow: visible;
+}
+
+/* Elementos decorativos sutiles como Nier */
+header::before,
+header::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  width: 250px;
+  height: 250px;
+}
+
+header::before {
+  top: -80px;
+  left: -80px;
+}
+
+header::after {
+  bottom: -90px;
+  right: -90px;
 }
 
 header h1 {
-  color: var(--gold);
   margin: 0;
-  font-size: 2rem;
+  color: var(--gold);
+  font-size: 2.2rem;
+  text-shadow: 2px 2px 6px #000;
 }
 
 header p {
-  color: var(--secondary);
-  margin: 5px 0 0;
-  font-size: 1.1rem;
+  margin: 8px 0 0;
+  color: #ddd;
+  font-size: 1.2rem;
 }
 
 /* ===========================
    CONTENEDOR LOGIN
 =========================== */
 .login-wrap {
-  flex: 1;                      /* ocupa el espacio disponible debajo del header */
+  flex: 1;
   display: flex;
-  align-items: center;           /* centra verticalmente */
-  justify-content: center;       /* centra horizontalmente */
-  padding: 80px;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
 }
 
-/* ===========================
-   TARJETA DE LOGIN
-=========================== */
 .login-card {
-  background: var(--panel-bg);   /* panel translúcido */
-  padding: 48px;
-  border-radius: 12px;
-  width: 280px;
-  box-shadow: 0 8px 30px rgba(43, 43, 43, 0.6);
+  background: rgba(20,20,20,0.9);   /* estilo Nier */
+  padding: 2.5rem 3rem;
+  border-radius: 16px;
+  max-width: 350px;
+  width: 50%;
+  box-shadow: 0 12px 18px rgba(0,0,0,0.68);
   text-align: center;
 }
 
 .login-card h2 {
-  color: var(--gold);
-  margin: 0 0 40px;
+  color: var(--primary);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
 }
 
 /* ===========================
-   CAMPOS DE FORMULARIO
+   FORMULARIO
 =========================== */
-.login-card input {
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form input {
   width: 100%;
   padding: 10px 12px;
-  margin: 10px 0;
+  margin: 8px 0;
   border-radius: 8px;
-  border: 2px solid rgba(61, 59, 51, 0.457);
-  background: rgba(224, 224, 224, 0.6);
-  color: var(--text-dark);
-  box-sizing: border-box;
+  border: 2px solid rgba(207,169,116,0.25);
+  background: rgba(40,40,40,0.6);
+  color: #fff;
+  font-size: 1rem;
   outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
 }
 
-.login-card input:focus {
-  border-color: var(--gold); /* resalta al enfocar */
+form input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 8px rgba(207,169,116,0.4);
+}
+
+form button {
+  padding: 0.9rem 1rem;
+  background: var(--primary);
+  color: #111;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+form button:hover {
+  background: #b8895f;
+  transform: translateY(-2px);
 }
 
 /* ===========================
-   BOTÓN
+   RESPONSIVE
 =========================== */
-.login-card button {
-  width: 100%;
-  margin-top: 20px;
-  padding: 12px;
-  background: var(--gold);
-  color: var(--text-dark);
-  border-radius: 8px;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+@media (max-width: 500px) {
+  .login-card {
+    padding: 2rem 1.2rem;
+    width: 80%;
+  }
 
-.login-card button:hover {
-  transform: scale(1.05); /* animación sutil */
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
 }

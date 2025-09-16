@@ -89,7 +89,7 @@ CREATE TABLE `citas_medicas` (
   PRIMARY KEY (`id_cita`),
   KEY `id_expediente` (`id_expediente`),
   CONSTRAINT `citas_medicas_ibfk_1` FOREIGN KEY (`id_expediente`) REFERENCES `expedientes_medicos` (`id_expediente`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `citas_medicas` (
 
 LOCK TABLES `citas_medicas` WRITE;
 /*!40000 ALTER TABLE `citas_medicas` DISABLE KEYS */;
-INSERT INTO `citas_medicas` VALUES (1,1,'2025-09-15 10:00:00','Cojera en pata trasera','Leve esguince. Se recomienda reposo.');
+INSERT INTO `citas_medicas` VALUES (1,1,'2025-09-15 10:00:00','Cojera en pata trasera','Leve esguince. Se recomienda reposo.'),(2,2,'2025-09-18 08:00:00','rutina',NULL);
 /*!40000 ALTER TABLE `citas_medicas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +145,7 @@ CREATE TABLE `expedientes_medicos` (
   PRIMARY KEY (`id_expediente`),
   UNIQUE KEY `id_mascota` (`id_mascota`),
   CONSTRAINT `expedientes_medicos_ibfk_1` FOREIGN KEY (`id_mascota`) REFERENCES `registro_mascotas` (`id_mascota`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,7 +154,7 @@ CREATE TABLE `expedientes_medicos` (
 
 LOCK TABLES `expedientes_medicos` WRITE;
 /*!40000 ALTER TABLE `expedientes_medicos` DISABLE KEYS */;
-INSERT INTO `expedientes_medicos` VALUES (1,1,'2025-09-11 15:56:24');
+INSERT INTO `expedientes_medicos` VALUES (1,1,'2025-09-11 15:56:24'),(2,12,'2025-09-15 00:00:00'),(3,13,'2025-09-16 00:00:00'),(4,14,'2025-09-16 00:00:00'),(5,15,'2025-09-16 00:00:00'),(6,16,'2025-09-16 00:00:00'),(7,17,'2025-09-16 00:00:00');
 /*!40000 ALTER TABLE `expedientes_medicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,7 +265,7 @@ CREATE TABLE `registro_mascotas` (
   PRIMARY KEY (`id_mascota`),
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `registro_mascotas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -274,7 +274,7 @@ CREATE TABLE `registro_mascotas` (
 
 LOCK TABLES `registro_mascotas` WRITE;
 /*!40000 ALTER TABLE `registro_mascotas` DISABLE KEYS */;
-INSERT INTO `registro_mascotas` VALUES (1,1,'Firulais','Perro','Mestizo',20220510),(2,1,'terry','perro',NULL,5),(3,1,'terry','perro',NULL,5),(4,1,'terry','perro',NULL,5),(5,1,'terry','perro',NULL,5),(6,1,'terry','perro',NULL,5),(7,1,'taquito','gato',NULL,3),(8,1,'juguete','perro',NULL,2);
+INSERT INTO `registro_mascotas` VALUES (1,1,'Firulais','Perro','Mestizo',20220510),(2,1,'terry','perro',NULL,5),(3,1,'terry','perro',NULL,5),(4,1,'terry','perro',NULL,5),(5,1,'terry','perro',NULL,5),(6,1,'terry','perro',NULL,5),(7,1,'taquito','gato',NULL,3),(8,1,'juguete','perro',NULL,2),(9,1,'roki','perro',NULL,2),(10,1,'koki','perro',NULL,1),(11,1,'titan ','perro',NULL,6),(12,1,'titan','perro',NULL,6),(13,3,'nena','perro',NULL,11),(14,3,'nena2','perro',NULL,12),(15,3,'nena3','perro',NULL,10),(16,3,'nena4','perro',NULL,9),(17,5,'nena5','perro',NULL,8);
 /*!40000 ALTER TABLE `registro_mascotas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,10 +290,11 @@ CREATE TABLE `usuarios` (
   `NombreCompleto` varchar(100) NOT NULL,
   `Contrasena` varchar(255) NOT NULL,
   `Token` varchar(255) DEFAULT NULL,
-  `Rol` enum('Encargado de Farmacia','Médico Veterinario','Administrador') NOT NULL,
-  `Privilegiado` tinyint(1) DEFAULT '0',
+  `Rol` enum('Encargado de Farmacia','Médico Veterinario','Administrador','Cliente') NOT NULL,
+  `Privilegiado` tinyint(1) NOT NULL DEFAULT '0',
+  `Email` varchar(150) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -302,7 +303,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Juan Pérez','farmacia123','tok_farmacia','Encargado de Farmacia',0),(2,'María Gómez','vet456','tok_vet','Médico Veterinario',0),(3,'Carlos Ruiz','admin789','tok_admin','Administrador',1);
+INSERT INTO `usuarios` VALUES (1,'Juan Pérez','farmacia123','tok_farmacia','Encargado de Farmacia',0,''),(2,'María Gómez','vet456','tok_vet','Médico Veterinario',0,''),(3,'Carlos Ruiz','admin789','tok_admin','Administrador',1,''),(4,'Cesar','1234',NULL,'Administrador',0,'cesar@fusalmo.com'),(5,'ernesto','1234',NULL,'Cliente',0,'ernesto@fusalmo.com'),(6,'aaron','123',NULL,'Administrador',1,'aaron@fusalmo.com'),(7,'alondra','123',NULL,'Cliente',0,'alondra@fusalmo.com'),(8,'marinaly','456',NULL,'Cliente',0,'marinaly@fusalmo.com');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -315,4 +316,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-12 17:27:10
+-- Dump completed on 2025-09-16 10:04:21

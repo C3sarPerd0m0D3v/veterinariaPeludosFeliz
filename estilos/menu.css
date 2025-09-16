@@ -72,6 +72,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
+  min-height: 45px;
 }
 
 header nav {
@@ -86,6 +87,7 @@ header ul {
   list-style: none;
   display: flex;
   gap: 1.5rem;
+  align-items: center;
 }
 
 header ul li a {
@@ -103,16 +105,23 @@ header ul li a:hover {
 }
 
 /* Botón de donaciones en header */
-.donar-btn {
+.donar-btn, .admin-btn {
   background: #0088ff;
   color: #fff !important;
   font-weight: 700;
+  font-size: 14px;
   padding: 8px 16px;
   border-radius: 8px;
   transition: background 0.3s, transform 0.2s;
+
+  /*esta parte es para el boton de admin */
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+
 }
 
-.donar-btn:hover {
+.donar-btn:hover, .admin-btn:hover {
   background: #0056b3;
   transform: translateY(-2px);
 }

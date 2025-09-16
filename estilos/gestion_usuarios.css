@@ -1,0 +1,45 @@
+
+main {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+main > .form-container {
+    flex: 1;
+    min-width: 700px;
+}
+.user-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+.user-table th, .user-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+.user-table th {
+    background-color: #f2f2f2;
+    color: var(--text-dark);
+}
+.user-table .nombre, .user-table .email, .user-table .rol {
+    word-break: break-all;
+}
+.user-table td:last-child {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.edit-btn, .delete-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0;
+}
+.delete-btn {
+    background-color: #fcebeb;
+    color: #a30000;
+}

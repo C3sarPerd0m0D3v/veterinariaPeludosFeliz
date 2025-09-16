@@ -38,10 +38,11 @@ contacto -->
 <header>
   <nav>
     <ul>
-      <li><a href="menu.html">menu</a></li>
-      <li><a href="#">servicios veterinarios</a></li>
-      <li><a href="contacto.html">contacto</a></li>
-      <li><a href="preguntasveterinarias.html">preguntas veterinarias</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="mis_mascotas.html">Mis Mascotas</a></li>
+      <li><a href="#">Servicios veterinarios</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="preguntasveterinarias.html">Preguntas veterinarias</a></li>
     </ul>
   </nav>
   </header>
@@ -52,16 +53,16 @@ contacto -->
       <form id="registroForm">
         <input type="text" id="nombreMascota" placeholder="Nombre de la mascota" required>
         <input type="number" id="edadMascota" placeholder="Edad de la mascota" required min="0">
-        <input type="text" id="nombreDuenio" placeholder="Nombre del dueño" required>
-        <input type="text" id="duiDuenio" placeholder="DUI del dueño" required>
         
         <select id="especie" required>
           <option value="">Selecciona especie</option>
           <option value="gato">Gato</option>
           <option value="perro">Perro</option>
+          <option value="Otro">Otro</option>
         </select>
 
-        <input type="tel" id="contacto" placeholder="Contacto (teléfono o email)" required>
+        <input type="text" id="razaMascota" placeholder="Raza (opcional)">
+        
         
         <button type="submit">Registrar</button>
       </form>

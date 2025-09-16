@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="../estilos/login.css"> 
+</head>
+<body>
+    <header>
+      <h1>Crea tu Cuenta</h1>
+      <p>Únete a la familia de Peludos Felices</p>
+    </header>
+
+    <div class="login-wrap">
+      <div class="login-card">
+        <h2>Ingresa tus datos</h2>
+        
+        <form id="formularioRegistro">
+            <input type="text" id="nombreRegistro" placeholder="Nombre Completo" required>
+            <input type="email" id="emailRegistro" placeholder="Correo Electrónico" required>
+            <input type="password" id="contrasenaRegistro" placeholder="Contraseña" required>
+            <button type="submit">Registrarme</button>
+        </form>
+
+        <a href="login.html" style="display: block; margin-top: 15px;">¿Ya tienes cuenta? Inicia sesión</a>
+      </div>
+    </div>
+
+    <script src="../js/registro_usuario.js"></script>
+</body>
+</html>

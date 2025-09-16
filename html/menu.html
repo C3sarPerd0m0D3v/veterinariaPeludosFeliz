@@ -29,13 +29,17 @@
 <header>
   <nav>
     <ul>
-      <li><a href="menu.html">menu</a></li>
-      <li><a href="#">servicios veterinarios</a></li>
-      <li><a href="contacto.html">contacto</a></li>
-      <li><a href="preguntasveterinarias.html">preguntas veterinarias</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="mis_mascotas.html">Mis Mascotas</a></li>
+      <li><a href="#">Servicios veterinarios</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li><a href="preguntasveterinarias.html">Preguntas veterinarias</a></li>
     
+      <li id="admin-link-li" style="display: none;"><a href="gestion_usuarios.html" class="donar-btn">Panel Admin</a></li>
+
         <!-- Botón especial de donación -->
-<li><button class="donar-btn">Donar 💙</button></li>
+      <li><button id="open-donate-modal-btn" class="donar-btn">Donar 💙</button></li>
+      <li><button id="logout-btn" class="admin-btn" style="background-color: #0088ff;">Cerrar Sesion</button></li>
     </ul>
   </nav>
 </header>
@@ -98,6 +102,7 @@
   <button class="carrusel-btn next" aria-label="Siguiente">❯</button>
 </div>
 
+
    
 <!-- SECCIÓN SELECTION -->
 <section class="selection-section">
@@ -141,15 +146,26 @@
     <button class="modal-close" id="cerrarModal">&times;</button>
     <h2>Elige tu forma de donar</h2>
     <p>Apoya a nuestros peludos felices</p>
-
-    <a href="https://www.paypal.com/donate" target="_blank" class="donar-opcion paypal">PayPal</a>
-    <a href="https://www.mercadopago.com" target="_blank" class="donar-opcion mercadopago">Mercado Pago</a>
-    <a href="https://www.agricolabank.com" target="_blank" class="donar-opcion banco">Banco Agrícola</a>
-
-    <div class="modal-contacto">
-      <p>Veterinaria Peludos Felices</p>
-      <p>correo@veterinariapeludos.com</p>
-      <p>Cuenta: 1234-5678-9012</p>
+ 
+    <!-- MINI FORMULARIO -->
+    <form id="miniFormularioDonar">
+      <input type="text" id="nombreDonante" placeholder="Tu nombre" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
+      <input type="email" id="correoDonante" placeholder="Tu correo" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
+      <button type="submit" class="btn-carrusel" style="width: 100%;">Continuar</button>
+    </form>
+ 
+    <!-- BOTONES DE DONACIÓN (ocultos al inicio) -->
+    <div id="donarOpciones" style="display: none;">
+      <a href="https://www.paypal.com/donate" target="_blank" class="donar-opcion paypal">PayPal</a>
+      <a href="https://www.mercadopago.com" target="_blank" class="donar-opcion mercadopago">Mercado Pago</a>
+      <a href="https://www.agricolabank.com" target="_blank" class="donar-opcion banco">Banco Agrícola</a>
+  
+ 
+      <div class="modal-contacto">
+        <p>Veterinaria Peludos Felices</p>
+        <p>correo@veterinariapeludos.com</p>
+        <p>Cuenta: 1234-5678-9012</p>
+      </div>
     </div>
   </div>
 </div>

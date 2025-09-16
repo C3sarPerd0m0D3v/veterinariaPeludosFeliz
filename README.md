@@ -4,6 +4,10 @@
 
 ![Estado](https://img.shields.io/badge/estado-en%20desarrollo-green.svg)
 
+### Diagrama de Flujo de la Aplicacion
+
+![Diagrama de Flujo](DB/DiagramaFlujoAppVet.png)
+
 ### Diagrama Entidad-Relación
 
 ![Diagrama de la Base de Datos](DB/diagramaEER.png)

@@ -1,148 +1,163 @@
-// ==========================================================
-// logica para mostrar el nombre del usuario activo en el menu
-// ==========================================================
 
 document.addEventListener('DOMContentLoaded', function() {
   
-  // datos guardados en el localStorage
+  // ==========================================================
+  // BIENVENIDA Y PANEL DE ADMINISTRADOR
+  // ==========================================================
+
   const usuarioActivo = localStorage.getItem('usuario');
+
+  const rolUsuario = localStorage.getItem('usuario_rol');
   
-  // busca la linea del id que pusimos en el html para mostrar el nombre
   const elementoBienvenida = document.getElementById('nombre-usuario-activo');
   
-  // verificacion de usuario
+  
+  const adminLink = document.getElementById('admin-link-li'); 
+  
+  // Muestra el nombre del usuario
+
   if (usuarioActivo && elementoBienvenida) {
-    // usuario encontrado se muestra en el menu
+
     elementoBienvenida.textContent = usuarioActivo;
-  } else if (elementoBienvenida) {
-    // se deja esta logica de prueba para una eventual creacion de usuarios
-    //elementoBienvenida.textContent = 'Invitado';
+
+  } 
+  
+  // muestra el boton del panel de admin si el rol es 'Administrador'
+
+  if (adminLink && rolUsuario === 'Administrador') {
+
+    // esto hace vvisisble el boton del panel de admin si se ha ingresado como administrador
+
+    adminLink.style.display = 'list-item'; 
   }
-});
 
-// ==========================================================
-// logica del carrusel automatico
-// ==========================================================
-let indice = 0;
-const items = document.querySelectorAll('.carrusel-item');
-const carrusel = document.querySelector('.carrusel');
-const prevBtn = document.querySelector('.carrusel-btn.prev');
-const nextBtn = document.querySelector('.carrusel-btn.next');
+  // ==========================================================
+  // LOGICA DEL CARRUSEL
+  // ==========================================================
+  
+  const carruselContainer = document.querySelector('.carrusel-container');
 
-// ==========================================================
-// funcion para mover el carrusel
-// ==========================================================
-function actualizarCarrusel(dir = 1) {
-  // mover índice
-  indice = (indice + dir + items.length) % items.length;
-  carrusel.style.transform = `translateX(${-indice * (100 / items.length)}%)`;
-}
+  if (carruselContainer) {
 
-// ==========================================================
-// auto-movimiento con reset al usar botones
-// ==========================================================
-let carruselInterval = setInterval(() => actualizarCarrusel(1), 3000);
+    let indice = 0;
+    const items = carruselContainer.querySelectorAll('.carrusel-item');
+    const carrusel = carruselContainer.querySelector('.carrusel');
+    const prevBtn = carruselContainer.querySelector('.carrusel-btn.prev');
+    const nextBtn = carruselContainer.querySelector('.carrusel-btn.next');
+    let carruselInterval;
 
-function moverConReset(dir) {
-  actualizarCarrusel(dir);          
-  clearInterval(carruselInterval);  
-  carruselInterval = setInterval(() => actualizarCarrusel(1), 3000); 
-}
+    function actualizarCarrusel(dir = 1) {
 
-// ==========================================================
-// Botones laterales
-// ==========================================================
-nextBtn.addEventListener('click', () => moverConReset(1));
-prevBtn.addEventListener('click', () => moverConReset(-1));
+      if (items.length > 0) {
 
-// ==========================================================
-// Rotación automática de imágenes en .selection-img
-// ==========================================================
-document.addEventListener("DOMContentLoaded", () => {
-  const imagenes = document.querySelectorAll(".selection-img img");
-  let index = 0;
+        indice = (indice + dir + items.length) % items.length;
 
-  // mostrar primera
-  imagenes[index].classList.add("active");
+        if (carrusel) {
 
-  setInterval(() => {
-    // quitar actual
-    imagenes[index].classList.remove("active");
-    // avanzar
-    index = (index + 1) % imagenes.length;
-    // mostrar nueva
-    imagenes[index].classList.add("active");
-  }, 3000); 
-});
+          carrusel.style.transform = `translateX(${-indice * (100 / items.length)}%)`;
 
-// ==========================================================
-// SELECCIÓN DE ITEM DEL CARRUSEL CON PAUSA Y RESALTE
-// ==========================================================
-// ==========================================================
-// SELECCIÓN DE ITEM DEL CARRUSEL CON PAUSA Y RESALTE
-// ==========================================================
-let selectedItem = null; 
-let resetTimeout = null;
+        }
 
-items.forEach(item => {
-  item.addEventListener('click', () => {
-    if (item === selectedItem) {
-      const enlace = item.querySelector('a');
-      if (enlace) window.location.href = enlace.href;
-      return;
+      }
+
     }
 
-    selectedItem = item;
+    function moverConReset(dir) {
 
-    items.forEach(i => {
-      if (i === item) {
-        i.classList.add('selected');
-        i.classList.remove('faded');
-      } else {
-        i.classList.add('faded');
-        i.classList.remove('selected');
-      }
-    });
+      actualizarCarrusel(dir);   
 
-    clearInterval(carruselInterval);
+      clearInterval(carruselInterval);  
 
-    if (resetTimeout) clearTimeout(resetTimeout);
+      carruselInterval = setInterval(() => actualizarCarrusel(1), 3000); 
+    }
 
-    resetTimeout = setTimeout(() => {
-      items.forEach(i => i.classList.remove('selected', 'faded'));
-      selectedItem = null;
-      // reinicia carrusel automático sin centrar nada extra
-      carrusel.style.transform = `translateX(${-indice * (100 / items.length)}%)`;
+    if (items.length > 0) {
       carruselInterval = setInterval(() => actualizarCarrusel(1), 3000);
-    }, 2500);
-  });
-});
+    }
 
+    if (nextBtn) nextBtn.addEventListener('click', () => moverConReset(1));
+    if (prevBtn) prevBtn.addEventListener('click', () => moverConReset(-1));
+  }
 
-// ==========================================================
-// LOGICA MODAL DE DONACIONES
-// ==========================================================
-document.addEventListener('DOMContentLoaded', () => {
+  // ==========================================================
+  // ROTACION DE IMAGENES EN LA SECCION DE SERVICIOS
+  // ==========================================================
 
-  const btnDonar = document.querySelector('.donar-btn');
+  const selectionImgContainer = document.querySelector(".selection-img");
+  if (selectionImgContainer) {
+    const imagenes = selectionImgContainer.querySelectorAll("img");
+    if (imagenes.length > 0) {
+      let index = 0;
+      imagenes[index].classList.add("active");
+      setInterval(() => {
+        imagenes[index].classList.remove("active");
+        index = (index + 1) % imagenes.length;
+        imagenes[index].classList.add("active");
+      }, 3000);
+    }
+  }
+  
+  // ==========================================================
+  // LoGICA DEL MODAL DE DONACIONES
+  // ==========================================================
+  const btnDonar = document.getElementById('open-donate-modal-btn');
   const modal = document.getElementById('modalDonar');
-  const cerrar = document.getElementById('cerrarModal');
-
-  if(btnDonar && modal && cerrar) {
+  
+  if (btnDonar && modal) {
+    const cerrar = document.getElementById('cerrarModal');
+    const miniForm = document.getElementById('miniFormularioDonar');
+    const donarOpciones = document.getElementById('donarOpciones');
+   
     btnDonar.addEventListener('click', (e) => {
       e.preventDefault();
       modal.classList.add('active');
+      if (miniForm) miniForm.style.display = 'block';
+      if (donarOpciones) donarOpciones.style.display = 'none';
     });
-
-    cerrar.addEventListener('click', () => {
-      modal.classList.remove('active');
-    });
-
+   
+    if (cerrar) cerrar.addEventListener('click', () => modal.classList.remove('active'));
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('active');
-      }
+      if(e.target === modal) modal.classList.remove('active');
     });
+   
+    if (miniForm) {
+      miniForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nombre = document.getElementById('nombreDonante').value;
+        const correo = document.getElementById('correoDonante').value;
+        console.log("Donante:", nombre, correo);
+        miniForm.style.display = 'none';
+        if (donarOpciones) donarOpciones.style.display = 'block';
+      });
+    }
+  }
+
+  // Cerrar sesion
+
+  const logoutButton = document.getElementById('logout-btn');
+  
+  if (logoutButton) {
+
+    logoutButton.addEventListener('click', () => {
+
+      // Mostramos un mensaje de confirmacion
+
+      if (confirm('¿Estás seguro de que quieres cerrar la sesion?')) {
+
+        // borramos todos los datos guardados en localStorage
+
+        localStorage.clear();
+        
+        // redirigimos al usuario a la pagina de login
+
+        window.location.href = 'login.html';
+
+      }
+
+    });
+
   }
 
 });
+
+

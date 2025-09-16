@@ -1,70 +1,91 @@
-// mensaje para saber que cargo bien
-// esto no la va a ver el usuario, solo nosotros por temas de errores
-console.log("registro.js cargado");
+document.addEventListener('DOMContentLoaded', function() {
 
-// aca seleccionamos el formulario por su id
-let formRegistro = document.getElementById('registroForm');
+    console.log("registro.js cargado y listo.");
 
-// le decimos que escuche cuando alguien intente darle en el boton de enviar
-formRegistro.addEventListener('submit', function(evento) {
+    // seleccionamos el formulario por su id
 
-  // aqui evitamos que se recargue la pagina
-  evento.preventDefault(); 
-  
-  // despues seleccionamos cada uno de los campos del formulario
-  let nombreMascota = document.getElementById('nombreMascota').value;
-  let edadMascota = document.getElementById('edadMascota').value;
-  let nombreDuenio = document.getElementById('nombreDuenio').value;
-  let duiDuenio = document.getElementById('duiDuenio').value;
-  let especie = document.getElementById('especie').value;
-  let contacto = document.getElementById('contacto').value;
+    const formRegistro = document.getElementById('registroForm');
 
-  // Obtenemos el ID del usuario que guardamos al iniciar sesión
-  const id_usuario = localStorage.getItem('usuario_id');
+    // Le decimos que escuche cuando se envíe el formulario
 
-  // realizamos una validación simple para ver si alguno de los campos esta vacio
-  if (nombreMascota === "" || edadMascota === "" || nombreDuenio === "" || especie === "") {
-    // si algo esta vacio mostramos un error al usuario
-    alert("Por favor, llena todos los campos requeridos.");
-    return;
-  }
-  
-  if (!id_usuario) {
-    alert("Error: No se ha iniciado sesión. Por favor, inicie sesión primero.");
-    return;
-  }
+    formRegistro.addEventListener('submit', function(evento) {
 
-  // si todo esta completo, nos comunicamos con el servidor
-  console.log("Enviando datos de mascota al servidor...");
+        // Evitamos que la página se recargue
+
+        evento.preventDefault(); 
+        
+        // Obtenemos el ID del usuario que guardó la sesión
+
+        const id_usuario = localStorage.getItem('usuario_id');
+
+        // Validamos que el usuario haya iniciado sesión
+
+        if (!id_usuario) {
+
+            alert("Error: No se ha iniciado sesión. Por favor, inicie sesión primero.");
+
+            window.location.href = 'login.html';
+
+            return;
+
+        }
+
+        // obtenemos los valores de los campos del NUEVO formulario
+        const nombreMascota = document.getElementById('nombreMascota').value;
+        const edadMascota = document.getElementById('edadMascota').value;
+        const especie = document.getElementById('especie').value;
+        const raza = document.getElementById('razaMascota').value;
+
+        // corregimos la validacion para que revise los campos correctos
+
+        if (nombreMascota === "" || edadMascota === "" || especie === "") {
+
+            alert("Por favor, llena todos los campos requeridos.");
+
+            return;
+
+        }
+        
+        // agrupamos TODOS los datos que el servidor necesita, incluyendo la raza
+
+        const datosMascota = {
+            id_usuario: id_usuario,
+            nombreMascota: nombreMascota,
+            edadMascota: edadMascota,
+            especie: especie,
+            raza: raza
+        };
+
+        // enviamos los datos al servidor
+
+        fetch('http://127.0.0.1:8000/mascotas/registrar/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(datosMascota)
+        })
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            alert(data.message);
+
+            if (data.success) {
+
+                // si el registro es exitoso redirigimos a Mis Mascotas
+
+                window.location.href = 'mis_mascotas.html';
+            }
+
+        })
+        .catch(error => {
+
+            console.error('Error:', error);
+
+            alert('Hubo un error al registrar la mascota.');
+
+        });
+
+    });
     
-  // primero se agruparian los datos en un objeto
-  const datosMascota = {
-    id_usuario: id_usuario,
-    nombreMascota: nombreMascota,
-    edadMascota: edadMascota,
-    especie: especie,
-    // Los otros campos del formulario no son necesarios para la tabla de mascotas
-  };
-
-  // luego se usuaria el fetch para enviar el objeto a una url o ruta del servidor
-  fetch('http://127.0.0.1:8000/mascotas/registrar/', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(datosMascota)
-  })
-  .then(response => response.json())
-  .then(data => {
-      // finalmente el cliente osea javascript recibe la respuesta y mostraria un mensaje al usuario
-      alert(data.message);
-
-      if (data.success) {
-          formRegistro.reset(); // esto es para limpiar el formulario
-      }
-  })
-  .catch(error => {
-      console.error('Error:', error);
-      alert('Hubo un error al registrar la mascota.');
-  });
 });

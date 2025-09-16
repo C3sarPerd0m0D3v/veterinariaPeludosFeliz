@@ -1,93 +1,164 @@
-console.log("archivo citas cargado");
+// esperamos a que el DOM este completamente cargado
+document.addEventListener('DOMContentLoaded', function() {
 
-// seleccionamos el formulario por su id
+    console.log("archivo citas cargado");
 
-let formCitas = document.getElementById('citasForm');
+    //  elementos del DOM
 
-// le ponemos un addEventListener de eventos para cuando se intente enviar
+    const idUsuario = localStorage.getItem('usuario_id');
 
-formCitas.addEventListener('submit', function(evento) {
+    const formCitas = document.getElementById('citasForm'); 
 
-  // evitamos que la pagina se recargue o que se vaya a otra parte
-
-  evento.preventDefault();
-  
-  // obtenemos los valores de cada campo del formulario
-
-  let mascota = document.getElementById('mascota').value;
-
-  let fecha = document.getElementById('fechaCita').value;
-
-  let hora = document.getElementById('horaCita').value;
-
-  let razon = document.getElementById('razon').value;
-
-  let historial = document.getElementById('historial').value;
-
-  
-  // hacemos una validacion rapida para los campos que son obligatorios
-
-  if (mascota === "" || fecha === "" || hora === "" || razon === "") { // si algun campo obligatorio esta vacio entonces
-
-    // mostramos un mensaje de error
-    // || es el operador logico "O" 
-
-    alert("Campos Requeridos");
-
-  } else {
-
-    // si la validacion pasa entonces mostramos un mensaje de exito
-
-    // ===================================================================
-
-    // aquie enviariamos los datos de la cita al servidor django (python) y mysql 
-
-    // ===================================================================
-
-    console.log("Enviando datos de la cita al servidor");
-
-    console.log(`Mascota: ${mascota}, Fecha: ${fecha}, Hora: ${hora}, Razón: ${razon}`);
-
-    // solo todo sale bien entonces django guardaria la cita en la base de datos de mysql
-
-    // ===================================================================
-
-    alert(`Tu Cita fue agendada con exito para ${mascota} el dia ${fecha} a las ${hora}`); // mostramos un mensaje al usuario
+    const selectMascota = document.getElementById('mascota');   
     
-    // limpiamos el formulario para que se pueda agendar otra cita
+    // ventana emergente de citas
 
-    formCitas.reset(); // esto limpia todos los campos del formulario
+    const overlay = document.getElementById('overlay');
 
-  }
+    const cerrarBtn = document.getElementById('cerrarBtn');
 
+    const mensajePopup = document.getElementById('mensajePopup');
+
+    const generarCitaBtn = document.getElementById('generarCitaBtn');
+
+    if (!idUsuario) {
+
+        alert('Por favor, inicia sesión para poder agendar una cita.');
+
+        window.location.href = 'login.html';
+
+        return;
+
+    }
+
+    // Cargar mascotas del ususario (lista)
+
+    function cargarMascotas() {
+
+        fetch(`http://127.0.0.1:8000/mascotas/por-usuario/?usuario_id=${idUsuario}`)
+
+            .then(response => response.json())
+
+            .then(data => {
+
+                if (data.success && data.mascotas.length > 0) {
+
+                    selectMascota.innerHTML = '<option value="">Selecciona la mascota</option>';
+
+                    data.mascotas.forEach(mascota => {
+
+                        const opcion = document.createElement('option');
+
+                        opcion.value = mascota.id;
+
+                        opcion.textContent = mascota.nombre;
+
+                        selectMascota.appendChild(opcion);
+
+                    });
+
+                } else {
+
+                    selectMascota.innerHTML = '<option value="">No tienes mascotas registradas</option>';
+
+                }
+
+            })
+
+            .catch(error => console.error('Error al cargar mascotas:', error));
+    }
+
+    // Envio del formualrio
+
+    formCitas.addEventListener('submit', function(evento) {
+
+        evento.preventDefault();
+        
+        const idMascota = selectMascota.value;
+
+        const fecha = document.getElementById('fechaCita').value;
+
+        const hora = document.getElementById('horaCita').value;
+
+        const motivo = document.getElementById('razon').value; 
+
+        if (!idMascota || !fecha || !hora || !motivo) {
+
+            alert('Por favor, completa todos los campos.');
+
+            return;
+
+        }
+
+        const fechaHoraCompleta = `${fecha} ${hora}:00`;
+
+        const datosCita = {
+
+            id_mascota: idMascota,
+
+            fecha_cita: fechaHoraCompleta,
+
+            motivo_cita: motivo
+
+        };
+
+        fetch('http://127.0.0.1:8000/citas/registrar/', {
+
+            method: 'POST',
+
+            headers: { 'Content-Type': 'application/json' },
+
+            body: JSON.stringify(datosCita)
+
+        })
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            alert(data.message);
+
+            if (data.success) {
+
+                formCitas.reset();
+
+            }
+
+        })
+
+        .catch(error => {
+
+            console.error('Error al registrar cita:', error);
+
+            alert('Hubo un error al conectar con el servidor.');
+
+        });
+
+    });
+
+    // Generar Cita ventna emergente
+
+    generarCitaBtn.addEventListener('click', function() {
+
+        const mascotaTexto = selectMascota.options[selectMascota.selectedIndex].text || "tu mascota";
+
+        const fecha = document.getElementById('fechaCita').value || "una fecha";
+
+        const hora = document.getElementById('horaCita').value || "una hora";
+        
+        mensajePopup.textContent = `Se ha generado un comprobante de cita para ${mascotaTexto} el ${fecha} a las ${hora}.`;
+
+        overlay.style.display = 'flex';
+
+    });
+
+    cerrarBtn.addEventListener('click', function() {
+
+        overlay.style.display = 'none';
+
+    });
+
+    // listado de mascotas al cargar la pagina
+    
+    cargarMascotas();
 });
-
- 
-/* ===========================================
-   LOGICA ADICIONAL: VENTANA EMERGENTE
-   =========================================== */
- 
-// referencias a la ventana emergente
-const overlay = document.getElementById('overlay');
-const cerrarBtn = document.getElementById('cerrarBtn');
-const mensajePopup = document.getElementById('mensajePopup');
- 
-// botón independiente para generar cita (no afecta el submit principal)
-const generarCitaBtn = document.getElementById('generarCitaBtn');
- 
-generarCitaBtn.addEventListener('click', function() {
-  // obtenemos algunos valores del formulario (opcional)
-  const mascota = document.getElementById('mascota').value || "tu mascota";
-  const fecha = document.getElementById('fechaCita').value || "una fecha";
-  const hora = document.getElementById('horaCita').value || "una hora";
- 
-  // mostramos ventana emergente
-  mensajePopup.textContent = `Se ha generado una cita para ${mascota} el ${fecha} a las ${hora}.`;
-  overlay.style.display = 'flex';
-});
- 
-// cerrar la ventana emergente
-cerrarBtn.addEventListener('click', function() {
-  overlay.style.display = 'none';
-});
- 

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion de Usuarios</title>
+    <link rel="stylesheet" href="../estilos/registro.css">
+    <link rel="stylesheet" href="../estilos/gestion_usuarios.css">
+    
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="menu.html">Menú</a></li>
+                <li><a href="gestion_usuarios.html">Gestionar Usuarios</a></li>
+                <li><a href="gestion_mascotas.html">Gestionar Mascotas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Crear Nuevo Usuario</h2>
+            <form id="create-usuario-form">
+                <input type="text" id="create-nombre" placeholder="Nombre Completo" required>
+                <input type="email" id="create-email" placeholder="Correo Electrónico" required>
+                <input type="password" id="create-contrasena" placeholder="Contraseña" required>
+                <select id="create-rol" required>
+                    <option value="Cliente">Cliente</option>
+                    <option value="Encargado de Farmacia">Encargado de Farmacia</option>
+                    <option value="Médico Veterinario">Médico Veterinario</option>
+                    <option value="Administrador">Administrador</option>
+                </select>
+                <button type="submit">Crear Usuario</button>
+            </form>
+        </div>
+
+        <div class="form-container">
+            <h2>Usuarios Registrados</h2>
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-usuarios">
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="edit-modal" class="overlay">
+        <div class="popup">
+            <h2>Editar Usuario</h2>
+            <form id="edit-usuario-form">
+                <input type="hidden" id="edit-user-id">
+                <input type="text" id="edit-nombre" required>
+                <input type="email" id="edit-email" required>
+                <select id="edit-rol" required>
+                    <option value="Cliente">Cliente</option>
+                    <option value="Encargado de Farmacia">Encargado de Farmacia</option>
+                    <option value="Médico Veterinario">Médico Veterinario</option>
+                    <option value="Administrador">Administrador</option>
+                </select>
+                <button type="submit">Guardar Cambios</button>
+                <button type="button" id="cancel-edit">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/gestion_usuarios.js"></script>
+</body>
+</html>

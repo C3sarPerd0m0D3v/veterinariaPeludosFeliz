@@ -39,8 +39,9 @@ Un AppWeb para la gestion de citas, mascotas y pacientes de la clinica veterinar
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
 ### ⚙️ Back-End  
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)  
-![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=FFD43B)  
+![Django](https://img.shields.io/badge/Django-2BA977?style=for-the-badge&logo=django&logoColor=white)
+
 
 ### 🗄️ Base de Datos  
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)

@@ -88,6 +88,23 @@ Sigue estos pasos para levantar el proyecto en un entorno local.
 7.  **Front-End:**
     Abre el archivo `login.html` usando la extensión "Live Server" de vs code para que corra en un puerto como `5501`.
 
+
+8. **Instalacion con Requirements.txt (recomendado se instala todo de una vez con un solo comando)**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+9. **Extensiones Recomendadas para VS Code para una mejor experiencia**
+
+| Extensión | Editor | Propósito |
+| :--- | :--- | :--- |
+| **[Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)** | Microsoft | Proporciona autocompletado, depuración y soporte esencial para Python. |
+| **[Django](https://marketplace.visualstudio.com/items?itemName=batisteo.vscode-django)** | Baptiste Darthenay | Ofrece atajos y resaltado de sintaxis específico para el framework Django. |
+| **[Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)** | Ritwick Dey | Inicia un servidor local para el front-end con recarga automática al guardar cambios. |
+| **[Prettier - Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)** | Prettier | Formatea automáticamente el código HTML, CSS y JavaScript para mantenerlo limpio y ordenado. |
+| **[GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)** | GitKraken | Mejora la integración con Git, permitiendo ver quién y cuándo modificó cada línea de código. |
+| **[Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)** | Philipp Kief | Asigna iconos específicos a cada tipo de archivo, mejorando la navegación visual del proyecto. |
+
 ---
 
 ##  Modo de uso
@@ -103,3 +120,4 @@ Una vez que ambos servidores (Django y Live Server (live server es opcional)) es
 1. Juan Pérez	farmacia123	
 2. María Gómez 	vet456
 3. Carlos Ruiz	admin789
+4. Ana          123

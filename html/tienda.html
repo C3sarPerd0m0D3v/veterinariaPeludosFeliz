@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tienda - Peludos Felices</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../estilos/menu.css">
+    <link rel="stylesheet" href="../estilos/tienda.css">
+</head>
+<body>
+    <div class="top-bar">
+        <a href="https://www.facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.youtube.com" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+    </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="mis_mascotas.html">Mis Mascotas</a></li>
+                <li><a href="tienda.html">Tienda</a></li> <li><a href="#">Servicios Veterinarios</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li id="admin-link-li" style="display: none;"><a href="gestion_usuarios.html" class="admin-btn">Panel Admin</a></li>
+                <li><button id="open-donate-modal-btn" class="donar-btn">Donar 💙</button></li>
+                <li><button id="logout-btn" class="admin-btn" style="background-color: #0088ff;">Cerrar Sesion</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="tienda-container">
+        <h1>Dog Market</h1>
+        <div id="lista-productos" class="productos-grid">
+            </div>
+    </main>
+
+    <div id="compra-modal" class="overlay">
+        <div class="popup">
+            <h2>Confirmar Compra</h2>
+            <p>Estas a punto de pedir: <strong id="producto-nombre-modal"></strong></p>
+            <p>Precio: <strong id="producto-precio-modal"></strong></p>
+            <hr>
+            <h4>Instrucciones de Pago</h4>
+            <p>Para completar tu compra por favor envia un mensaje a nuestro WhatsApp con tu nombre y el del producto</p>
+            <a href="#" id="whatsapp-link" target="_blank" class="modal-form-btn" style="background-color: #25D366;">
+                <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+            </a>
+            <button type="button" id="cancel-compra-btn" class="modal-form-btn" style="background-color: #6c757d;">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="../js/tienda.js"></script>
+</body>
+</html>

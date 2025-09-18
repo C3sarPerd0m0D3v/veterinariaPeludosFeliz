@@ -1,53 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
-
     console.log("registro.js cargado y listo.");
 
-    // seleccionamos el formulario por su id
-
+    // 1. Buscamos el formulario específico por su ID
     const formRegistro = document.getElementById('registroForm');
 
-    // Le decimos que escuche cuando se envíe el formulario
+    // Si no estamos en la página de registro, no hacemos nada más para evitar errores.
+    if (!formRegistro) {
+        return;
+    }
 
+    // 2. Le decimos que escuche cuando ESE formulario se envíe (y no a otros)
     formRegistro.addEventListener('submit', function(evento) {
-
-        // Evitamos que la página se recargue
-
         evento.preventDefault(); 
         
-        // Obtenemos el ID del usuario que guardó la sesión
-
         const id_usuario = localStorage.getItem('usuario_id');
-
-        // Validamos que el usuario haya iniciado sesión
-
+        
         if (!id_usuario) {
-
             alert("Error: No se ha iniciado sesión. Por favor, inicie sesión primero.");
-
             window.location.href = 'login.html';
-
             return;
-
         }
-
-        // obtenemos los valores de los campos del NUEVO formulario
+        
+        // 3. Obtenemos los valores de los campos del formulario correcto y simplificado
         const nombreMascota = document.getElementById('nombreMascota').value;
         const edadMascota = document.getElementById('edadMascota').value;
         const especie = document.getElementById('especie').value;
         const raza = document.getElementById('razaMascota').value;
 
-        // corregimos la validacion para que revise los campos correctos
-
+        // 4. La validación está corregida
         if (nombreMascota === "" || edadMascota === "" || especie === "") {
-
             alert("Por favor, llena todos los campos requeridos.");
-
             return;
-
         }
         
-        // agrupamos TODOS los datos que el servidor necesita, incluyendo la raza
-
+        // 5. Agrupamos TODOS los datos que el servidor necesita
         const datosMascota = {
             id_usuario: id_usuario,
             nombreMascota: nombreMascota,
@@ -56,36 +42,23 @@ document.addEventListener('DOMContentLoaded', function() {
             raza: raza
         };
 
-        // enviamos los datos al servidor
-
+        // 6. Enviamos los datos al servidor
         fetch('http://127.0.0.1:8000/mascotas/registrar/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(datosMascota)
         })
-
         .then(response => response.json())
-
         .then(data => {
-
             alert(data.message);
-
             if (data.success) {
-
-                // si el registro es exitoso redirigimos a Mis Mascotas
-
+                // 7. Redirigimos a "Mis Mascotas"
                 window.location.href = 'mis_mascotas.html';
             }
-
         })
         .catch(error => {
-
             console.error('Error:', error);
-
             alert('Hubo un error al registrar la mascota.');
-
         });
-
     });
-    
 });

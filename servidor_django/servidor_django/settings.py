@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'usuarios',
     'mascotas',
+    'citas',
+    'adopciones',
+    'tienda',
     'corsheaders',
 ]
 
@@ -135,5 +138,9 @@ CORS_ALLOWED_ORIGINS = [
     "null", 
     "http://127.0.0.1:5500",
     "http://127.0.0.1:5501",
+]
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^http://127\.0\.0\.1:\d+$",
 ]
 

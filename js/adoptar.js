@@ -1,103 +1,88 @@
-console.log("adoptar.js cargado");
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("adoptar.js cargado con lógica dinámica.");
 
-// aqui va la parte logica del modal y de seleccionar mascota
+    let mascotaSeleccionadaId = null;
+    let mascotaSeleccionadaNombre = "";
 
-// lo primero guardamos en una variable el nombre de la mascota que se elija
+    const divMascotaSeleccion = document.getElementById('mascotasSeleccion');
+    const formAdopcion = document.getElementById('adopcionForm');
+    const galeria = document.querySelector('.galeria');
 
-// porque la iniciamos vacia? porque al principio no se ha seleccionado ninguna
+    // --- FUNCIÓN NUEVA: Cargar mascotas desde el servidor ---
+    function cargarMascotasAdoptables() {
+        fetch('http://127.0.0.1:8000/mascotas/adoptables/')
+            .then(response => response.json())
+            .then(data => {
+                galeria.innerHTML = ''; // Limpiamos la galería fija
+                if (data.success && data.mascotas.length > 0) {
+                    data.mascotas.forEach(mascota => {
+                        const mascotaCard = document.createElement('button');
+                        mascotaCard.type = 'button';
+                        mascotaCard.className = 'card';
+                        mascotaCard.dataset.id = mascota.id;
+                        mascotaCard.dataset.nombre = mascota.nombre;
 
-let mascotaSeleccionada = "";
+                        const icono = mascota.especie.toLowerCase() === 'gato' ? 'gato1.jpg' : 'perro1.jpg';
 
-// luego seleccionamos el div o la caja a donde mostraremos el nombre de la mascota elegida
+                        mascotaCard.innerHTML = `
+                            <img src="../img/${icono}" alt="${mascota.nombre}">
+                            <p>${mascota.nombre}</p>
+                        `;
+                        galeria.appendChild(mascotaCard);
+                    });
+                } else {
+                    galeria.innerHTML = '<p>No hay mascotas disponibles para adopción en este momento.</p>';
+                }
+            });
+    }
 
-let divMascotaSeleccion = document.getElementById('mascotasSeleccion');
+    // --- El resto del código es similar, pero ahora es más seguro ---
+    if (galeria) {
+        galeria.addEventListener('click', function(e) {
+            const mascotaCard = e.target.closest('.card');
+            if (!mascotaCard) return;
 
-// despues seleccionamos todas las tarjetas de mascotas a la vez
+            mascotaSeleccionadaId = mascotaCard.dataset.id;
+            mascotaSeleccionadaNombre = mascotaCard.dataset.nombre;
+            
+            divMascotaSeleccion.innerHTML = `<p>Has seleccionado a: <strong>${mascotaSeleccionadaNombre}</strong></p>`;
+            window.location.hash = '#';
+        });
+    }
 
-// querySelectorAll nos dara una lista de todos los elementos que coinciden
+    formAdopcion.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+        const nombreAdoptante = document.getElementById('nombre').value;
+        const id_usuario = localStorage.getItem('usuario_id');
 
-let todasLasMascotas = document.querySelectorAll('.card');
+        if (nombreAdoptante && id_usuario && mascotaSeleccionadaId) {
+            const datosAdopcion = {
+                id_usuario: id_usuario,
+                id_mascota: mascotaSeleccionadaId,
+                nombreAdoptante: nombreAdoptante
+            };
 
-// ahora recorremos esa lista de mascotas una por una para agregarles a una funcion
+            fetch('http://127.0.0.1:8000/adopciones/registrar/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(datosAdopcion)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                if (data.success) {
+                    formAdopcion.reset();
+                    mascotaSeleccionadaId = null;
+                    mascotaSeleccionadaNombre = "";
+                    divMascotaSeleccion.innerHTML = "";
+                    cargarMascotasAdoptables(); // Recargamos la lista
+                }
+            });
+        } else {
+            alert("Por favor, completa tu nombre, inicia sesion y selecciona una mascota");
+        }
+    });
 
-todasLasMascotas.forEach(function(mascota) {
-
-  // ahora bien a cada tarjeta de mascota le ponemos un addEventListener de click 
-  // esto hara que se ejecute una funcion
-
-  mascota.addEventListener('click', function() {
-    
-    // Cuando se hace clic obtenemos el nombre guardado en data-nombre
-
-    mascotaSeleccionada = mascota.dataset.nombre;
-
-    console.log("Mascota seleccionada:", mascotaSeleccionada);
-    
-    // Mostramos en la página principal cuál mascota se eligio
-
-    // usamos comilla invertida para poder usar ${} y poner variables dentro de adoptar.html
-
-    divMascotaSeleccion.innerHTML = ` 
-
-      <p>Has seleccionado a: <strong>${mascotaSeleccionada}</strong></p>
-
-    `;
-    
-    // ahora ya podemos cerrar el modal La forma mas facil es cambiar el "hash" de la URL a nada
-
-    // lo dejamos vacio con '#'
-
-    window.location.hash = '#';
-
-  });
-
+    // Llamamos a la función para cargar las mascotas al iniciar
+    cargarMascotasAdoptables();
 });
-
-// la logica del formulario de adopcion
-
-let formAdopcion = document.getElementById('adopcionForm');
-
-formAdopcion.addEventListener('submit', function(evento) {
-
-  evento.preventDefault(); // como en las demas evitamos que la pagina se recargue o se vaya a otra parte
-  
-  // obtenemos el nombre de la persona que va a adoptar
-
-  let nombreAdoptante = document.getElementById('nombre').value;
-  
-  // hacemos la validacion
-
-  // Revisamos si el nombre no esta vacio Y (&&) si ya se selecciono una mascota
-
-  if (nombreAdoptante !== "" && mascotaSeleccionada !== "") {
-
-    // ================================================================
-    // aqui va la logica python(django) y mysql aqui se enviaria  la solicitud de adopcion a django/mysql
-    // =================================================================
-
-    console.log(`Solicitud de adopcion enviada: ${nombreAdoptante} quiere adoptar a ${mascotaSeleccionada}.`);
-
-
-    // django recibiria estos datos y los guardaria en la base de datos mysql
-
-    
-    alert(`Gracias ${nombreAdoptante} solicitud de adopcion enviada para adoptar a ${mascotaSeleccionada}.`);
-    
-    // limpiamos los campos para una nueva adopcion
-
-    formAdopcion.reset(); // esto limpia el campo de texto del nombre
-
-    mascotaSeleccionada = ""; // esto limpia la variable de la mascota seleccionada
-
-    divMascotaSeleccion.innerHTML = ""; // esto limpia el div que muestra la mascota seleccionada
-
-  } else {
-
-    // Si falta algun dato mostramos un error
-
-    alert("Ingresa tu nombre y selecciona una mascota del Album de Adopciones");
-
-  }
-
-});
-

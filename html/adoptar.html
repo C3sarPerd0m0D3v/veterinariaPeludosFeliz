@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
-  <title>Adopción de Mascotas</title>
+  <title>Adopcion de Mascotas</title>
   <link rel="stylesheet" href="../estilos/adopcion.css">
+  <link rel="stylesheet" href="../estilos/menu.css">
 </head>
+
 <body>
 
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Menú -->
- <!-- Franja superior con redes -->
-<div class="top-bar">
-  <a href="https://www.facebook.com" target="_blank" class="social-icon">
-    <i class="fab fa-facebook-f"></i>
-  </a>
-  <a href="https://www.instagram.com" target="_blank" class="social-icon">
-    <i class="fab fa-instagram"></i>
-  </a>
-  <a href="https://www.twitter.com" target="_blank" class="social-icon">
-    <i class="fab fa-twitter"></i>
-  </a>
-  <a href="https://www.youtube.com" target="_blank" class="social-icon">
-    <i class="fab fa-youtube"></i>
-  </a>
-</div>
+  <!-- Menú -->
+  <!-- Franja superior con redes -->
+  <div class="top-bar">
+    <a href="https://www.facebook.com" target="_blank" class="social-icon">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com" target="_blank" class="social-icon">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.twitter.com" target="_blank" class="social-icon">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://www.youtube.com" target="_blank" class="social-icon">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </div>
 
-<!-- Header principal -->
-<header>
-  <nav>
-    <ul>
-      <li><a href="menu.html">menu</a></li>
-      <li><a href="#">servicios veterinarios</a></li>
-      <li><a href="contacto.html">contacto</a></li>
-      <li><a href="preguntasveterinarias.html">preguntas veterinarias</a></li>
-    </ul>
-  </nav>
+  <!-- Header principal -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="mis_mascotas.html">Mis Mascotas</a></li>
+        <li><a href="#">Servicios veterinarios</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="preguntasveterinarias.html">Preguntas veterinarias</a></li>
+        <li id="admin-link-li" style="display: none;"><a href="gestion_usuarios.html" class="admin-btn">Panel Admin</a>
+        </li>
+        <li><button id="open-donate-modal-btn" class="donar-btn">Donar 💙</button></li>
+        <li><button id="logout-btn" class="admin-btn" style="background-color: #0088ff;">Cerrar Sesion</button></li>
+      </ul>
+    </nav>
   </header>
   <!-- Contenido principal -->
   <main>
@@ -44,11 +52,7 @@
       <form id="adopcionForm">
         <input type="text" id="nombre" placeholder="Tu nombre" required>
 
-        <select id="especie" required>
-          <option value="">Selecciona especie</option>
-          <option value="gatos">Gato</option>
-          <option value="perros">Perro</option>
-        </select>
+
 
         <!-- Botón para abrir modal -->
         <a href="#modal" class="btn">Seleccionar Mascota</a>
@@ -63,52 +67,44 @@
   <div id="modal" class="modal">
     <div class="modal-content">
       <h3>Selecciona una mascota</h3>
-            <!-- Botón cerrar modal -->
-  
+      <!-- Botón cerrar modal -->
+
       <div class="galeria">
-        <!-- Gatos -->
-        <button type="button" class="card" data-nombre="Michi">
-          <img src="css/img/gato1.jpg" alt="Michi">
+        <button type="button" class="card" data-id="7" data-nombre="Michi">
+          <img src="../img/perro3.jpg" alt="Michi">
           <p>Michi</p>
         </button>
-        <button type="button" class="card" data-nombre="Luna">
-          <img src="css/img/gato2.jpg" alt="Luna">
-          <p>Luna</p>
-        </button>
-        <button type="button" class="card" data-nombre="Tom">
-          <img src="css/img/gato3.jpg" alt="Tom">
-          <p>Tom</p>
-        </button>
-
-        <!-- Perros -->
-        <button type="button" class="card" data-nombre="Firulais">
-          <img src="css/img/perro1.jpg" alt="Firulais">
+        <button type="button" class="card" data-id="1" data-nombre="Firulais">
+          <img src="../img/perro1.jpg" alt="Firulais">
           <p>Firulais</p>
         </button>
-        <button type="button" class="card" data-nombre="Max">
-          <img src="css/img/perro2.jpg" alt="Max">
+        <button type="button" class="card" data-id="8" data-nombre="Max">
+          <img src="../img/perro2.jpg" alt="Max">
           <p>Max</p>
         </button>
-        <button type="button" class="card" data-nombre="Nina">
-          <img src="css/img/perro3.jpg" alt="Nina">
+        <button type="button" class="card" data-id="9" data-nombre="Nina">
+          <img src="../img/perro3.jpg" alt="Nina">
           <p>Nina</p>
         </button>
       </div>
-        <!-- Botón cerrar modal -->
+
+
+      <!-- Botón cerrar modal -->
       <a href="#" class="close">Cerrar</a>
     </div>
   </div>
 
-      <!-- Footer -->
-    <footer class="footer">
-      <p>
-        © 2025 Veterinaria Peludos Felices | 
-        <a href="contacto.html">Contáctanos</a>
-      </p>
-    </footer>    
+  <!-- Footer -->
+  <footer class="footer">
+    <p>
+      © 2025 Veterinaria Peludos Felices |
+      <a href="contacto.html">Contáctanos</a>
+    </p>
+  </footer>
 
-    <script src="../js/adoptar.js"></script>
+  <script src="../js/adoptar.js"></script>
 
 
 </body>
-</html>  
+
+</html>

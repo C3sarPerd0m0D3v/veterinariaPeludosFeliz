@@ -33,9 +33,9 @@ CREATE TABLE `adopciones` (
   PRIMARY KEY (`id_adopcion`),
   UNIQUE KEY `id_mascota` (`id_mascota`),
   KEY `fk_adopcion_usuario` (`id_usuario`),
-  CONSTRAINT `fk_adopcion_mascota` FOREIGN KEY (`id_mascota`) REFERENCES `registro_mascotas` (`id_mascota`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_adopcion_mascota` FOREIGN KEY (`id_mascota`) REFERENCES `registro_mascotas` (`id_mascota`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_adopcion_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,6 +44,7 @@ CREATE TABLE `adopciones` (
 
 LOCK TABLES `adopciones` WRITE;
 /*!40000 ALTER TABLE `adopciones` DISABLE KEYS */;
+INSERT INTO `adopciones` VALUES (4,1,5,'2025-09-17','Adoptado por ernesto');
 /*!40000 ALTER TABLE `adopciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,9 +88,9 @@ CREATE TABLE `citas_medicas` (
   `motivo_cita` varchar(255) DEFAULT NULL,
   `diagnostico` text,
   PRIMARY KEY (`id_cita`),
-  KEY `id_expediente` (`id_expediente`),
-  CONSTRAINT `citas_medicas_ibfk_1` FOREIGN KEY (`id_expediente`) REFERENCES `expedientes_medicos` (`id_expediente`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `citas_medicas_ibfk_1` (`id_expediente`),
+  CONSTRAINT `citas_medicas_ibfk_1` FOREIGN KEY (`id_expediente`) REFERENCES `expedientes_medicos` (`id_expediente`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +99,7 @@ CREATE TABLE `citas_medicas` (
 
 LOCK TABLES `citas_medicas` WRITE;
 /*!40000 ALTER TABLE `citas_medicas` DISABLE KEYS */;
-INSERT INTO `citas_medicas` VALUES (1,1,'2025-09-15 10:00:00','Cojera en pata trasera','Leve esguince. Se recomienda reposo.'),(2,2,'2025-09-18 08:00:00','rutina',NULL);
+INSERT INTO `citas_medicas` VALUES (1,1,'2025-09-15 10:00:00','Cojera en pata trasera','Leve esguince. Se recomienda reposo.');
 /*!40000 ALTER TABLE `citas_medicas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,8 +145,8 @@ CREATE TABLE `expedientes_medicos` (
   `fecha_creacion` datetime NOT NULL,
   PRIMARY KEY (`id_expediente`),
   UNIQUE KEY `id_mascota` (`id_mascota`),
-  CONSTRAINT `expedientes_medicos_ibfk_1` FOREIGN KEY (`id_mascota`) REFERENCES `registro_mascotas` (`id_mascota`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `expedientes_medicos_ibfk_1` FOREIGN KEY (`id_mascota`) REFERENCES `registro_mascotas` (`id_mascota`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,7 +155,7 @@ CREATE TABLE `expedientes_medicos` (
 
 LOCK TABLES `expedientes_medicos` WRITE;
 /*!40000 ALTER TABLE `expedientes_medicos` DISABLE KEYS */;
-INSERT INTO `expedientes_medicos` VALUES (1,1,'2025-09-11 15:56:24'),(2,12,'2025-09-15 00:00:00'),(3,13,'2025-09-16 00:00:00'),(4,14,'2025-09-16 00:00:00'),(5,15,'2025-09-16 00:00:00'),(6,16,'2025-09-16 00:00:00'),(7,17,'2025-09-16 00:00:00');
+INSERT INTO `expedientes_medicos` VALUES (1,1,'2025-09-11 15:56:24'),(11,21,'2025-09-18 00:00:00'),(14,24,'2025-09-18 00:00:00'),(15,25,'2025-09-18 00:00:00');
 /*!40000 ALTER TABLE `expedientes_medicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,7 +177,7 @@ CREATE TABLE `productos` (
   PRIMARY KEY (`id_producto`),
   KEY `id_categoria` (`id_categoria`),
   CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias_productos` (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,7 +186,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'Analgésico Canino','Analgésico para aliviar el dolor en perros.',12.50,100,NULL,2);
+INSERT INTO `productos` VALUES (1,'Analgésico Canino','Analgésico para aliviar el dolor en perros.',12.50,100,'/img/pro3.png',2),(2,'Comida para Gato Adulto','Croquetas premium para gatos mayores de 1 año.',19.99,80,'../img/pro1.png',1),(3,'Shampoo Antipulgas','Shampoo medicado para el control de pulgas y garrapatas.',9.75,120,'../img/pro2.png',3),(4,'Snacks Dentales para Perro','Premios para ayudar a la limpieza dental canina.',7.50,200,'../img/pro4.png',1);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,9 +264,9 @@ CREATE TABLE `registro_mascotas` (
   `raza` varchar(50) DEFAULT NULL,
   `edad` int DEFAULT NULL,
   PRIMARY KEY (`id_mascota`),
-  KEY `id_usuario` (`id_usuario`),
-  CONSTRAINT `registro_mascotas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `registro_mascotas_ibfk_1` (`id_usuario`),
+  CONSTRAINT `registro_mascotas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`Id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -274,7 +275,7 @@ CREATE TABLE `registro_mascotas` (
 
 LOCK TABLES `registro_mascotas` WRITE;
 /*!40000 ALTER TABLE `registro_mascotas` DISABLE KEYS */;
-INSERT INTO `registro_mascotas` VALUES (1,1,'Firulais','Perro','Mestizo',20220510),(2,1,'terry','perro',NULL,5),(3,1,'terry','perro',NULL,5),(4,1,'terry','perro',NULL,5),(5,1,'terry','perro',NULL,5),(6,1,'terry','perro',NULL,5),(7,1,'taquito','gato',NULL,3),(8,1,'juguete','perro',NULL,2),(9,1,'roki','perro',NULL,2),(10,1,'koki','perro',NULL,1),(11,1,'titan ','perro',NULL,6),(12,1,'titan','perro',NULL,6),(13,3,'nena','perro',NULL,11),(14,3,'nena2','perro',NULL,12),(15,3,'nena3','perro',NULL,10),(16,3,'nena4','perro',NULL,9),(17,5,'nena5','perro',NULL,8);
+INSERT INTO `registro_mascotas` VALUES (1,5,'Firulais','Perro','Mestizo',20220510),(21,3,'Firulais','perro',NULL,5),(24,3,'Michi','gato',NULL,5),(25,3,'Nina','gato',NULL,5);
 /*!40000 ALTER TABLE `registro_mascotas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,7 +295,7 @@ CREATE TABLE `usuarios` (
   `Privilegiado` tinyint(1) NOT NULL DEFAULT '0',
   `Email` varchar(150) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -303,7 +304,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Juan Pérez','farmacia123','tok_farmacia','Encargado de Farmacia',0,''),(2,'María Gómez','vet456','tok_vet','Médico Veterinario',0,''),(3,'Carlos Ruiz','admin789','tok_admin','Administrador',1,''),(4,'Cesar','1234',NULL,'Administrador',0,'cesar@fusalmo.com'),(5,'ernesto','1234',NULL,'Cliente',0,'ernesto@fusalmo.com'),(6,'aaron','123',NULL,'Administrador',1,'aaron@fusalmo.com'),(7,'alondra','123',NULL,'Cliente',0,'alondra@fusalmo.com'),(8,'marinaly','456',NULL,'Cliente',0,'marinaly@fusalmo.com');
+INSERT INTO `usuarios` VALUES (1,'Juan Pérez','farmacia123','tok_farmacia','Encargado de Farmacia',0,''),(2,'María Gómez','vet456','tok_vet','Médico Veterinario',0,''),(3,'Carlos Ruiz','admin789','tok_admin','Administrador',1,''),(4,'Cesar','1234',NULL,'Administrador',0,'cesar@fusalmo.com'),(5,'ernesto','1234',NULL,'Cliente',0,'ernesto@fusalmo.com'),(6,'aaron','123',NULL,'Administrador',1,'aaron@fusalmo.com'),(7,'alondra','123',NULL,'Cliente',0,'alondra@fusalmo.com'),(10,'Ana','123',NULL,'Cliente',0,'ana@fusalmo.com');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -316,4 +317,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-16 10:04:21
+-- Dump completed on 2025-09-18  3:28:44

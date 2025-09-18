@@ -12,9 +12,13 @@ def registrar_cita(request):
         return JsonResponse({'success': False, 'message': 'Método no permitido'}, status=405)
 
     try:
+        
         data = json.loads(request.body)
+        
         id_mascota = data.get('id_mascota')
+        
         fecha_cita = data.get('fecha_cita') # Formato esperado: año mes dia
+        
         motivo_cita = data.get('motivo_cita')
         
         if not all([id_mascota, fecha_cita, motivo_cita]):

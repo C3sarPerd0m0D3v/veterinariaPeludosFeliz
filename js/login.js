@@ -123,3 +123,25 @@ miFormulario.addEventListener("submit", function (evento) {
     });
 
 });
+
+// olvido de contraseña
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    const forgotPasswordLink = document.getElementById('forgot-password-link');
+
+    if (forgotPasswordLink) {
+
+        forgotPasswordLink.addEventListener('click', function(evento) {
+
+            evento.preventDefault(); 
+            
+            // mostramos la alerta 
+
+            alert("Se notifica al administrador");
+
+        });
+
+    }
+    
+});

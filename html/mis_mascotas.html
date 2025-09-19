@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="../estilos/menu.css">
   <link rel="stylesheet" href="../estilos/mis_mascotas.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-<!-- redes sociales -->
+
+  <!-- redes sociales -->
 </head>
 
 <body>
@@ -26,13 +26,13 @@
       <i class="fab fa-youtube"></i>
     </a>
   </div>
-<!-- Header principal -->
+  <!-- Header principal -->
   <header>
     <nav>
       <ul>
         <li><a href="menu.html">Menu</a></li>
         <li><a href="mis_mascotas.html">Mis Mascotas</a></li>
-        <li><a href="#">Servicios Veterinarios</a></li>
+        <li><a href="social.html">❤️¿Como Puedes Ayudar? </a></li>
         <li><a href="contacto.html">Contacto</a></li>
         <li><a href="preguntasveterinarias.html">Preguntas Veterinarias</a></li>
         <li id="admin-link-li" style="display: none;"><a href="gestion_usuarios.html" class="admin-btn">Panel Admin</a>
@@ -41,17 +41,22 @@
       </ul>
     </nav>
   </header>
-<!-- Contenido principal -->
+  <!-- Contenido principal -->
   <main>
     <div class="mascotas-container">
       <h1>Mis Mascotas Registradas</h1>
-      <p>Aqui puedes ver una lista de todos tus compañeros registrados en nuestra clinica</p>
+      <p>Aqui puedes ver una lista de todas tus mascotas registradas en nuestra clinica</p>
       <hr style="margin: 1rem 0;">
       <div id="lista-de-mascotas">
       </div>
+
+      <div id="historial-container">
+
+      </div>
+
     </div>
   </main>
-<!-- Modal para editar mascota -->
+  <!-- Modal para editar mascota -->
   <div id="edit-modal" class="overlay" style="display: none; justify-content: center; align-items: center;">
     <div class="popup" style="background: white; padding: 2rem; border-radius: 12px; text-align: center;">
       <h2>Editar Mascota</h2>

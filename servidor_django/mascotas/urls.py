@@ -13,6 +13,7 @@ urlpatterns = [
     path('actualizar/<int:mascota_id>/', views.actualizar_mascota, name='actualizar_mascota'),
     path('eliminar/<int:mascota_id>/', views.eliminar_mascota, name='eliminar_mascota'),
     path('adoptables/', views.listar_mascotas_adoptables, name='listar_adoptables'),
+    path('historial/<int:mascota_id>/', views.obtener_historial_mascota, name='historial_mascota'),
     
 ]
 

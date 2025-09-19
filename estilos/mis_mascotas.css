@@ -5,7 +5,7 @@
             padding: 2rem;
             background: rgba(255, 255, 255, 0.9);
             border-radius: 16px;
-            box-shadow: 0 4px
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .mascotas-container h1 {
@@ -29,4 +29,31 @@
         .mascota-card-icon {
             font-size: 2rem;
             margin-right: 1.5rem;
+        }
+
+        .mascota-card[data-cliente="true"] {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .mascota-card[data-cliente="true"]:hover {
+            background-color: #e9e9e9;
+        }
+
+        .historial-titulo {
+            margin-top: 2rem;
+            border-top: 1px solid #ccc;
+            padding-top: 2rem;
+        }
+
+        .cita-item {
+            background: #f0f0f0;
+            border-left: 4px solid var(--primary); 
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .cita-item p {
+            margin: 0.5rem 0;
         }

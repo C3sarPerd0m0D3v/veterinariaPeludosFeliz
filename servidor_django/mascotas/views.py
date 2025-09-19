@@ -319,3 +319,34 @@ def listar_mascotas_adoptables(request):
     except Exception as e:
         
         return JsonResponse({'success': False, 'message': f'Error en el servidor: {e}'}, status=500)
+    
+    
+    
+
+def obtener_historial_mascota(request, mascota_id):
+    if request.method != 'GET':
+        return JsonResponse({'success': False, 'message': 'Método no permitido'}, status=405)
+
+    try:
+        with connection.cursor() as cursor:
+            # Esta consulta busca todas las citas de una mascota específica
+            query = """
+                SELECT cm.fecha_cita, cm.motivo_cita, cm.diagnostico
+                FROM citas_medicas cm
+                JOIN expedientes_medicos em ON cm.id_expediente = em.id_expediente
+                WHERE em.id_mascota = %s
+                ORDER BY cm.fecha_cita DESC
+            """
+            cursor.execute(query, [mascota_id])
+            historial = cursor.fetchall()
+
+        # Convertimos los resultados a un formato que JavaScript pueda usar
+        lista_historial = [
+            {'fecha': row[0], 'motivo': row[1], 'diagnostico': row[2]}
+            for row in historial
+        ]
+        
+        return JsonResponse({'success': True, 'historial': lista_historial})
+
+    except Exception as e:
+        return JsonResponse({'success': False, 'message': f'Error en el servidor: {e}'}, status=500)

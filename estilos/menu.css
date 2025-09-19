@@ -464,6 +464,7 @@ header ul li a:hover {
   text-align: center;
   box-shadow: 0 6px 20px var(--shadow-medium);
   position: relative;
+  z-index: 10000
 }
 
 .modal-content h2 {
@@ -541,4 +542,128 @@ header ul li a:hover {
 
 .modal-close:hover {
   color: var(--accent);
+}
+
+
+.donation-section {
+    background-color: #f9f9f9;
+    padding: 3rem 1rem;
+}
+.donation-box {
+    max-width: 500px;
+    margin: auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.donation-box h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+.donation-frequency {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+.donation-frequency input[type="radio"] {
+    display: none;
+}
+.donation-frequency label {
+    flex: 1;
+    padding: 0.8rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+.donation-frequency input[type="radio"]:checked + label {
+    background-color: var(--primary);
+    color: white;
+}
+.amount-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.amount-btn, .other-amount {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+.amount-btn:hover, .other-amount:hover {
+    border-color: var(--primary);
+}
+.amount-btn.selected {
+    background-color: #e6f7f0;
+    border-color: #008a4c;
+}
+.other-amount {
+    display: flex;
+    align-items: center;
+}
+.other-amount input {
+    border: none;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: none;
+}
+.other-amount input:focus {
+    outline: none;
+}
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.payment-btn {
+    padding: 1rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.payment-btn:hover {
+    opacity: 0.9;
+}
+.card-payment {
+    background-color: #5a6268;
+}
+.paypal-payment {
+    background-color: #0070ba;
+}
+
+.overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+}
+
+.popup {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }

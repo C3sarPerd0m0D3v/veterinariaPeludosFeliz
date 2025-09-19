@@ -1,110 +1,130 @@
-<link rel="stylesheet" href="../estilos/menu.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!DOCTYPE html>
+<html lang="es">
 
-<div class="top-bar">
-    <a href="https://www.facebook.com" target="_blank" class="social-icon">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://www.instagram.com" target="_blank" class="social-icon">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://www.twitter.com" target="_blank" class="social-icon">
-        <i class="fab fa-twitter"></i>
-    </a>
-    <a href="https://www.youtube.com" target="_blank" class="social-icon">
-        <i class="fab fa-youtube"></i>
-    </a>
-</div>
+<head>
+    <meta charset="UTF-8">
+    <title>¿Cómo Puedes Ayudar? - Peludos Felices</title>
+    <link rel="stylesheet" href="../estilos/menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
 
-<!-- Header principal -->
-<header>
-    <nav>
-        <ul>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="mis_mascotas.html">Mis Mascotas</a></li>
-            <li><a href="social.html">❤️¿Como Puedes Ayudar? </a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-            <li><a href="preguntasveterinarias.html">Preguntas veterinarias</a></li>
-
-
-            <li id="admin-link-li" style="display: none;"><a href="gestion_usuarios.html" class="donar-btn">Panel
-                    Admin</a></li>
-
-            <!-- Boton donacion -->
-            <li><button id="open-donate-modal-btn" class="donar-btn">Donar 💙</button></li>
-            <li><button id="logout-btn" class="admin-btn" style="background-color: #0088ff;">Cerrar Sesion</button></li>
-        </ul>
-    </nav>
-</header>
-
-<section class="selection-section">
-    <div class="container">
-        <!-- Columna izquierda: imagen o ilustración -->
-        <div class="selection-img">
-            <img src="../img/adopta1.png" alt="Mascota 1">
-            <img src="../img/adopta2.jpg" alt="Mascota 2">
-            <img src="../img/adopta3.jpg" alt="Mascota 3">
-        </div>
-
-        <!-- Columna derecha: texto -->
-        <div class="selection-text">
-            <span class="subheading">Una Segunda Oportunidad para cada peludo</span>
-            <h2>Redes de Ayuda – Refugio y Adopciones</h2>
-            <p>En El Salvador, miles de perros y gatos viven olvidados en las calles, sin comida ni refugio. 
-                Dicen que son el mejor amigo del hombre, 
-                pero ellos aún esperan que el hombre sea su mejor amigo. 
-                Cada adopción responsable y cada acto de compasión puede cambiarles la vida… y también la nuestra.</p>
-
-            <ul class="list-services">
-                <li><span class="icon">💉</span> Campañas de Vacunacion</li>
-                <li><span class="icon">🐾</span> Eventos para Adoptantes</li>
-                <li><span class="icon">❤️</span> Refugio y Adopciones</li>
-                <li><span class="icon">🏥</span> Apoyo en salud inicial Post-Rescate</li>
-                <li><span class="icon">🐾</span> Programas de Voluntariado</li>
-            </ul>
-        </div>
+<body>
+    <div class="top-bar">
+        <a href="https://www.facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.youtube.com" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
     </div>
-</section>
 
+    <header>
+        <nav>
+            <ul>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="mis_mascotas.html">Mis Mascotas</a></li>
+                <li><a href="tienda.html">Tienda</a></li>
+                <li><a href="social.html">❤️¿Como Puedes Ayudar?</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li id="admin-link-li" style="display: none;"><a href="gestion_usuarios.html" class="donar-btn">Panel
+                        Admin</a></li>
 
+                <!-- boton donación -->
+                <li><a href="social.html#seccion-donar" class="donar-btn">Donar 💙</a></li>
+                <li><button id="logout-btn" class="admin-btn" style="background-color: #0088ff;">Cerrar Sesion</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-<footer class="footer">
-    <p>
-        © 2025 Veterinaria Peludos Felices |
-        <a href="contacto.html">Contáctanos</a>
-    </p>
-</footer>
-
-<script src="../js/menu.js"></script>
-
-<!-- MODAL DE DONACIONES -->
-<div class="modal" id="modalDonar">
-    <div class="modal-content">
-        <button class="modal-close" id="cerrarModal">&times;</button>
-        <h2>Elige tu forma de donar</h2>
-        <p>Apoya a nuestros peludos felices</p>
-
-        <!-- MINI FORMULARIO -->
-        <form id="miniFormularioDonar">
-            <input type="text" id="nombreDonante" placeholder="Tu nombre" required
-                style="width: 100%; padding: 8px; margin-bottom: 10px;">
-            <input type="email" id="correoDonante" placeholder="Tu correo" required
-                style="width: 100%; padding: 8px; margin-bottom: 10px;">
-            <button type="submit" class="btn-carrusel" style="width: 100%;">Continuar</button>
-        </form>
-
-        <!-- BOTONES DE DONACIon -->
-        <div id="donarOpciones" style="display: none;">
-            <a href="https://www.paypal.com/donate" target="_blank" class="donar-opcion paypal">PayPal</a>
-            <a href="https://www.mercadopago.com" target="_blank" class="donar-opcion mercadopago">Mercado Pago</a>
-            <a href="https://www.agricolabank.com" target="_blank" class="donar-opcion banco">Banco Agrícola</a>
-
-
-            <div class="modal-contacto">
-                <p>Veterinaria Peludos Felices</p>
-                <p>correo@veterinariapeludos.com</p>
-                <p>Cuenta: 1234-5678-9012</p>
+    <section class="selection-section">
+        <div class="container">
+            <div class="selection-img">
+                <img src="../img/adopta1.png" alt="Mascota 1">
+                <img src="../img/adopta2.jpg" alt="Mascota 2">
+                <img src="../img/adopta3.jpg" alt="Mascota 3">
+            </div>
+            <div class="selection-text">
+                <span class="subheading">Una Segunda Oportunidad para cada peludo</span>
+                <h2>Redes de Ayuda – Refugio y Adopciones</h2>
+                <p>En El Salvador, miles de perros y gatos viven olvidados en las calles...</p>
+                <ul class="list-services">
+                    <li><span class="icon">💉</span> Campañas de Vacunacion</li>
+                    <li><span class="icon">🐾</span> Eventos para Adoptantes</li>
+                    <li><span class="icon">❤️</span> Refugio y Adopciones</li>
+                    <li><span class="icon">🏥</span> Apoyo en salud inicial Post-Rescate</li>
+                    <li><span class="icon">🐾</span> Programas de Voluntariado</li>
+                </ul>
             </div>
         </div>
+    </section>
+
+    <section id="seccion-donar" class="donation-section">
+        <div class="donation-box">
+            <h2>Dona Ahora</h2>
+            <div class="donation-frequency">
+                <input type="radio" name="frequency" id="one-time" value="one-time" checked>
+                <label for="one-time">UNA VEZ</label>
+                <input type="radio" name="frequency" id="monthly" value="monthly">
+                <label for="monthly">MENSUAL</label>
+            </div>
+            <div class="amount-options">
+                <button class="amount-btn" data-amount="10">$10</button>
+                <button class="amount-btn selected" data-amount="20">$20</button>
+                <button class="amount-btn" data-amount="30">$30</button>
+                <button class="amount-btn" data-amount="60">$60</button>
+                <div class="other-amount">
+                    <span>$</span>
+                    <input type="number" id="other-amount-input" placeholder="Otra cantidad">
+                </div>
+            </div>
+            <div class="payment-methods">
+                <button class="payment-btn card-payment"><i class="fas fa-credit-card"></i> Pagar con Tarjeta</button>
+                <button class="payment-btn paypal-payment"><i class="fab fa-paypal"></i> PayPal</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 Veterinaria Peludos Felices | <a href="contacto.html">Contáctanos</a></p>
+    </footer>
+
+    <div class="modal" id="modalDonar">
     </div>
-</div>
+
+
+    <div id="info-modal" class="overlay">
+        <div class="popup">
+            <h2 id="info-modal-title">Aviso</h2>
+            <p id="info-modal-message">Este es un mensaje de prueba.</p>
+            <button id="info-modal-close" class="modal-form-btn">Entendido</button>
+        </div>
+    </div>
+
+
+    <script src="../js/menu.js"></script>
+    <script src="../js/social.js"></script>
+
+    <!-- MODAL DE DONACIONES -->
+    <div class="modal" id="modalDonar">
+        <div class="modal-content">
+            <button class="modal-close" id="cerrarModal">&times;</button>
+            <h2>Elige tu forma de donar</h2>
+            <p>Apoya a nuestros peludos felices</p>
+
+            <!-- MINI FORMULARIO -->
+            <form id="miniFormularioDonar">
+                <input type="text" id="nombreDonante" placeholder="Tu nombre" required
+                    style="width: 100%; padding: 8px; margin-bottom: 10px;">
+                <input type="email" id="correoDonante" placeholder="Tu correo" required
+                    style="width: 100%; padding: 8px; margin-bottom: 10px;">
+                <button type="submit" class="btn-carrusel" style="width: 100%;">Continuar</button>
+            </form>
+
+            <!-- BOTON DONACIoN -->
+            <div id="donarOpciones" style="display: none;">
+                <a href="https://www.paypal.com/donate" target="_blank" class="donar-opcion paypal">PayPal</a>
+                <a href="https://www.mercadopago.com" target="_blank" class="donar-opcion mercadopago">Mercado Pago</a>
+                <a href="https://www.agricolabank.com" target="_blank" class="donar-opcion banco">Banco Agrícola</a>
+
+</body>
+
+</html>

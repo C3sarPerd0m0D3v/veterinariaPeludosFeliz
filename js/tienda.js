@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             //  enlace de WhatsApp
 
-            const numeroTelefono = '50312345678'; // cualquier numero de telefono
+            const numeroTelefono = '50376164936'; // cualquier numero de telefono
 
             const mensaje = encodeURIComponent(`¡Hola! Estoy interesado en comprar el producto: ${nombre}`);
 
